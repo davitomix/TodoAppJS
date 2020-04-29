@@ -1,0 +1,28 @@
+{
+  "name": "TodoAppJS",
+  "version": "1.0.0",
+  "description": "> This project consist on build a webpage where a user can put all their tasks of the day.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davitomix/TodoAppJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davitomix/TodoAppJS/issues"
+  },
+  "homepage": "https://github.com/davitomix/TodoAppJS#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
