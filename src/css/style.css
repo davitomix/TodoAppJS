@@ -8,9 +8,61 @@ html {
 }
 
 body {
-  background-color: rgb(199, 192, 192);
-  margin: 0;
+  background-color: white;
+  margin: auto;
   padding: 0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(31, 31, 28);
+  width: 95%;
 }
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: aqua;
+}
+
+.title{
+  text-align: center;
+}
+
+.main-cont {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.cont-1 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.projects {
+  width: 50%;
+  min-height: 50vh;
+  background-color: blanchedalmond;
+}
+
+.todos {
+  width: 50%;
+  min-height: 50vh;
+  background-color: coral;
+}
+
+.cont-2 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.add-project {
+  width: 50%;
+  min-height: 50vh;
+  background-color: darkcyan;
+}
+
+.add-todo {
+  width: 50%;
+  min-height: 50vh;
+  background-color: darksalmon;
+}
+
+
