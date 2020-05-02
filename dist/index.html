@@ -6,18 +6,20 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="title"><h1>Project ToDo</h1></div>
+
+  <div id="title">
+    <h1>Todo-Fy</h1>
+  </div>
+
   <div id="project-form" class="container-fluid">
     <div class="row">
-      
       <div id="form-container" class="col-sm-5">
-
-         <h2>Project name<br></h2> 
-          <ul id="project-list">
-            <li>Default</li>
-          </ul>
+        <h2>Project name<br></h2> 
+        <ul id="project-list">
+          <li>Default</li>
+        </ul>
       </div>
-      <div id="form-container" class="col-sm-5">
+      <div id="form-container" class="col-sm-5 ">
         <h2>Task name<br></h2> 
         <ul>
           <li>Default</li>
@@ -28,44 +30,42 @@
 
   <div id="project-form" class="container-fluid">
     <div class="row">
-      
       <div id="form-container" class="col-sm-5">
-          <label for="project-edit-name">
-            Project name<br>
-            <input type="text" id="new-name"><br>
-          </label>
-          <button type="button" name="update-project" class="submit" id="update-project" onclick="createp()">Add Project</button>
-          <button type="button" name="cancel" class="cancel" id="proj-edit-cancel">Cancel</button>
+        <label for="project-edit-name">
+          Project name<br>
+          <input type="text" id="new-name"><br>
+        </label>
+        <button type="button" name="update-project" class="submit" id="update-project" onclick="createp()">Add Project</button>
+        <button type="button" name="cancel" class="cancel" id="proj-edit-cancel">Cancel</button>
       </div>
       <div id="form-container" class="col-sm-5">
-          <label>
-            Task name
-            <input type="text" id="task-name" maxlength="25"><br>
-          </label>
-          <label>
-            Description
-            <textarea name="Description" rows="3" cols="40" id="task-description"></textarea>
-          </label>
-          <br>
-          <label>
-            Deadline
-            <input type="date" id="deadline"><br>
-          </label>
-          <label>
-            Priority
-            <select id="priority">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
-          </label>
+        <label>
+          Task name
+          <input type="text" id="task-name" maxlength="25"><br>
+        </label>
+        <label>
+          Description
+          <textarea name="Description" rows="3" cols="40" id="task-description"></textarea>
+        </label>
         <br>
-          <button type="button" name="submit-task" class="submit" id="create-task">Create New Task</button>
-          <button type="button" name="cancel" class="cancel" id="task-cancel">Cancel</button>
+        <label>
+          Deadline
+          <input type="date" id="deadline"><br>
+        </label>
+        <label>
+          Priority
+          <select id="priority">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <br>
+        <button type="button" name="submit-task" class="submit" id="create-task">Create New Task</button>
+        <button type="button" name="cancel" class="cancel" id="task-cancel">Cancel</button>
       </div>
     </div>
   </div>
-
 
   <script src="main.js"></script>
 </body>

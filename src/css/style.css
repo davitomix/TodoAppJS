@@ -1,20 +1,26 @@
-body{
-    background-color: rgb(226, 226, 236);
-}  
-  
-  #project-form {
-padding-top: 5%;
-  }
-  
-  #title{
-      text-align: center;
-  }
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
 
-  #form-container{
-      padding-top: 2%;
-      border: 2px solid black;
-      border-radius: 5px;
-      margin-left: 5%;
-  }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#title{
+  text-align: center;
+}
+
+#project-form {
+  padding: 5vh 0 5vh 0;
+  background-color: rgb(179, 216, 245);
+}
+
+#form-container{
+  padding-top: 2%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 5%;
+}
 
 
