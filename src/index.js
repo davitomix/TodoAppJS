@@ -1,8 +1,9 @@
-import './css/style.css';
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dom from './dom-utils.js';
+import './css/style.css';
+import Todo from './todos';
 
-const domItem = Dom;
 
-const name = domItem.name;
-console.log(name);
+const toDoObj = Todo;
+
+toDoObj.setTodoListener();

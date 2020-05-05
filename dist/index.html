@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">3
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
@@ -13,14 +13,14 @@
 
   <div id="project-form" class="container-fluid">
     <div class="row">
-      <div id="form-container" class="col-sm-5">
-        <h2>Project name<br></h2> 
+      <div id="project-container" class="col-sm-5 util-cont">
+        <h2>Project name</h2> 
         <ul id="project-list">
           <li>Default</li>
         </ul>
       </div>
-      <div id="form-container" class="col-sm-5 ">
-        <h2>Task name<br></h2> 
+      <div id="todo-container" class="col-sm-5 util-cont">
+        <h2>Task name</h2> 
         <ul>
           <li>Default</li>
         </ul>
@@ -30,40 +30,42 @@
 
   <div id="project-form" class="container-fluid">
     <div class="row">
-      <div id="form-container" class="col-sm-5">
+      <div class="col-sm-5 util-cont">
         <label for="project-edit-name">
           Project name<br>
-          <input type="text" id="new-name"><br>
+          <input type="text" id="project-name"><br>
         </label>
-        <button type="button" name="update-project" class="submit" id="update-project" onclick="createp()">Add Project</button>
+        <button type="button" name="update-project" class="submit" id="update-project">Add Project</button>
         <button type="button" name="cancel" class="cancel" id="proj-edit-cancel">Cancel</button>
       </div>
-      <div id="form-container" class="col-sm-5">
-        <label>
-          Task name
-          <input type="text" id="task-name" maxlength="25" value="hvfsdjkhvf"><br>
-        </label>
-        <label>
-          Description
-          <textarea name="Description" rows="3" cols="40" id="task-description"></textarea>
-        </label>
-        <br>
-        <label>
-          Deadline
-          <input type="date" id="deadline"><br>
-        </label>
-        <label>
-          Priority
-          <select id="priority">
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-          </select>
-        </label>
-        <br>
-        <button type="button" name="submit-task" class="submit" id="create-task">Create New Task</button>
-        <button type="button" name="cancel" class="cancel" id="task-cancel">Cancel</button>
+
+      <div class="col-sm-5 util-cont">
+        <form action="#" name="todoform" id="todo-form">
+          <label>
+            Task name
+            <input type="text" id="task-name" maxlength="25" required>
+          </label>
+          <label>
+            Description
+            <textarea name="Description" rows="3" cols="40" id="task-description" required></textarea>
+          </label>
+          <label>
+            Deadline
+            <input type="date" id="task-deadline" required>
+          </label>
+          <label>
+            Priority
+            <select id="task-priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+          <button type="button" name="create" class="submit" id="todo-create">Create New Task</button>
+          <button type="button" name="cancel" class="cancel" id="task-cancel">Cancel</button>
+        </form>
       </div>
+
     </div>
   </div>
 

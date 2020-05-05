@@ -18,7 +18,8 @@
 
 
 ## Getting Started
-
+- Install lodash -> npm install --save lodash
+- Install date-fns -> npm install date-fns --save
 - Download the repo con your computer.
 - Drag and drop the index.html file from the dist folder into your web browser.
 - Enjoy.

@@ -1,16 +1,13 @@
 const Dom = (() => {
-  const name = document.getElementById('task-name').value;
-  const description = document.getElementById('task-description');
+  const todoUl = document.createElement('ul');
+  const todoLi = document.createElement('li');
 
-  const verifyFields = () => {
-    
+  const injectTodo = (name, description, deadline, priority) => {
+    const todoContainer = document.getElementById('todo-container');
   };
-
   return {
-    name,
-    description
-  }
-
+    injectTodo
+  };
 })();
 
 export default Dom;
