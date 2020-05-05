@@ -5,10 +5,11 @@ const Todo = (() => {
   const todoCreateBtn = document.getElementById('todo-create');
 
   const setTodoListener = () => {
-    todoCreateBtn.addEventListener('click', createTodo);
+    todoForm.addEventListener('submit', createTodo);
   };
 
-  const createTodo = () => {
+  const createTodo = (e) => {
+    e.preventDefault();
     const domMultiplexor = Dom;
     const taskName = document.getElementById('task-name').value;
     const taskDescription = document.getElementById('task-description').value;

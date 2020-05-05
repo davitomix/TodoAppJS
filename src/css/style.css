@@ -7,8 +7,14 @@ html {
   box-sizing: inherit;
 }
 
-#title{
+#title {
+  background-color: thistle;
   text-align: center;
+}
+
+#title h1 {
+  padding: .5em 0;
+  margin: 0;
 }
 
 #project-form {
@@ -17,10 +23,67 @@ html {
 }
 
 .util-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-top: 2%;
   border: 2px solid black;
   border-radius: 5px;
   margin-left: 5%;
 }
 
+.todo-task {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: thistle;
+  margin: .25em;
+  width: 100%;
+}
+
+.todo-task tr th,
+.todo-task tr td {
+  padding: 0 5px;
+}
+
+.edit-todo-btn,
+.delete-todo-btn {
+  color: white;
+  text-align: center;
+}
+
+.edit-todo-btn {
+  background-color: rgb(169, 169, 51);
+}
+
+.delete-todo-btn {
+  background-color: tomato;
+}
+
+.project-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.not-selected {
+  background-color: thistle;
+}
+
+.selected {
+  background-color: rgb(176, 151, 176);
+}
+
+.project-div:hover {
+  cursor: pointer;
+}
+
+h3 {
+  padding: 2.5px 0;
+  font-size: 18px;
+}
 

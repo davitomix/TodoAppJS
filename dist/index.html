@@ -15,9 +15,9 @@
     <div class="row">
       <div id="project-container" class="col-sm-5 util-cont">
         <h2>Project name</h2> 
-        <ul id="project-list">
-          <li>Default</li>
-        </ul>
+        <div class="project-div not-selected">
+          <h3>Default</h3>
+        </div>
       </div>
       <div id="todo-container" class="col-sm-5 util-cont">
         <h2>Task name</h2> 
@@ -30,13 +30,13 @@
 
   <div id="project-form" class="container-fluid">
     <div class="row">
+
       <div class="col-sm-5 util-cont">
         <label for="project-edit-name">
           Project name<br>
           <input type="text" id="project-name"><br>
         </label>
         <button type="button" name="update-project" class="submit" id="update-project">Add Project</button>
-        <button type="button" name="cancel" class="cancel" id="proj-edit-cancel">Cancel</button>
       </div>
 
       <div class="col-sm-5 util-cont">
@@ -61,8 +61,7 @@
               <option value="low">Low</option>
             </select>
           </label>
-          <button type="button" name="create" class="submit" id="todo-create">Create New Task</button>
-          <button type="button" name="cancel" class="cancel" id="task-cancel">Cancel</button>
+          <button type="submit" name="create" class="submit" id="todo-create">Create New Task</button>
         </form>
       </div>
 
