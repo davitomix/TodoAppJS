@@ -11,7 +11,7 @@
     <h1>Todo-Fy</h1>
   </div>
 
-  <div id="project-form" class="container-fluid">
+  <div class="container-fluid big-cont">
     <div class="row">
       <div id="project-container" class="col-sm-5 util-cont">
         <h2>Project name</h2> 
@@ -28,15 +28,17 @@
     </div>
   </div>
 
-  <div id="project-form" class="container-fluid">
+  <div class="container-fluid big-cont">
     <div class="row">
 
       <div class="col-sm-5 util-cont">
-        <label for="project-edit-name">
-          Project name<br>
-          <input type="text" id="project-name"><br>
-        </label>
-        <button type="button" name="update-project" class="submit" id="update-project">Add Project</button>
+        <form action="#" name="projectform" id="project-form">
+          <label for="project-edit-name">
+            Project name<br>
+            <input type="text" id="project-name"><br>
+          </label>
+          <button type="submit" name="project-create" class="submit" id="project-create">Create New Project</button>
+        </form>
       </div>
 
       <div class="col-sm-5 util-cont">

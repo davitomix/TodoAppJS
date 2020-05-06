@@ -1,20 +1,26 @@
 import Dom from "./dom-utils";
 
 const Project = (() => {
-  const defaultProject = document.getElementById('pjct-default');
+  const projectForm = document.getElementById('project-form');
 
-  const selectProjectListener = () => {
-    defaultProject.addEventListener('click', selectProject)
+  const TodoProjectObj = {
+    
   };
 
-  const selectProject = (e) => {
+  const setNewProjectListener = () => {
+    projectForm.addEventListener('submit', createProject);
+  };
+
+  const createProject = (e) => {
     e.preventDefault();
-    defaultProject.classList.remove('not-selected');
-    defaultProject.classList.add('selected');
+    const domMultiplexor = Dom;
+    const projectName = document.getElementById('project-name').value;
+    console.log(projectName);
   };
 
   return {
-    selectProjectListener
+    TodoProjectObj,
+    setNewProjectListener
   };
 })();
 
