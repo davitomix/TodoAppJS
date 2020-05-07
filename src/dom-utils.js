@@ -1,4 +1,28 @@
 const Dom = (() => {
+  let currentId = 0;
+
+  const setProjectId = (id) => {
+    currentId = id;
+  };
+
+  const getProjectId = () => {
+    return currentId;
+  };
+
+  const injectProject = (name) => {
+    let idGenerator = new Date();
+    idGenerator = idGenerator.getTime();
+    const projectUl = document.getElementById('project-ul');
+    const projectLi = document.createElement('li');
+    projectLi.id = idGenerator;
+    setProjectId(projectLi.id.toString());
+    projectLi.classList = ['project-li not-selected'];
+    const projectH3 = document.createElement('h3');
+    projectH3.innerText = name;
+    projectLi.appendChild(projectH3);
+    projectUl.appendChild(projectLi);
+  };
+
   const injectTodo = (name, description, deadline, priority) => {
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
@@ -58,8 +82,16 @@ const Dom = (() => {
     todoTable.className = 'todo-task';
     todoContainer.appendChild(todoTable);
   };
+
+  const clearInput = (field) => {
+    document.getElementById(field).value = "";
+  };
+
   return {
-    injectTodo
+    getProjectId,
+    injectProject,
+    injectTodo,
+    clearInput
   };
 })();
 

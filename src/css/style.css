@@ -22,16 +22,6 @@ html {
   background-color: rgb(179, 216, 245);
 }
 
-.util-cont {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2%;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-left: 5%;
-}
-
 .todo-task {
   border: 2px solid black;
   border-radius: 5px;
@@ -59,7 +49,30 @@ html {
   background-color: tomato;
 }
 
-.project-div {
+.util-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 5%;
+}
+
+.pjct-list {
+  max-height: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.project-li {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,25 +80,23 @@ html {
   border: 2px solid black;
   border-radius: 5px;
   width: 100%;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.project-li:hover {
+  cursor: pointer;
 }
 
 .selected {
   background-color: rgb(176, 151, 176);
 }
 
-.project-div:hover {
-  cursor: pointer;
+.not-selected {		
+  background-color: thistle;		
 }
 
 h3 {
   padding: 2.5px 0;
   font-size: 18px;
-}
-
-#project-container{
-  height: 425px;
-}
-
-#forms-container{
-  height: 250px;
 }

@@ -1,4 +1,12 @@
 const Storage = (() => {
+  const removeFromStorage = (key) => {
+    localStorage.removeItem(key);
+  };
+
+  const addToStorage = (key ,item) => {
+    localStorage[key] = JSON.stringify(item);
+  };
+
   const checkTodoObj = () => {
     const todoObj = localStorage['Todos-Obj'];
     if(todoObj === undefined) {
@@ -8,9 +16,15 @@ const Storage = (() => {
       return true;
     }
   };
+
+  const getProjectFromStorage = () => {
+
+  };
   
   return {
-    checkTodoObj
+    removeFromStorage, 
+    addToStorage,
+    checkTodoObj,
   }
 })();
 
