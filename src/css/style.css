@@ -23,7 +23,6 @@ html {
 }
 
 .util-cont {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -70,10 +69,6 @@ html {
   width: 100%;
 }
 
-.not-selected {
-  background-color: thistle;
-}
-
 .selected {
   background-color: rgb(176, 151, 176);
 }
@@ -87,3 +82,10 @@ h3 {
   font-size: 18px;
 }
 
+#project-container{
+  height: 425px;
+}
+
+#forms-container{
+  height: 250px;
+}
