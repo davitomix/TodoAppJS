@@ -17,6 +17,7 @@ const projectForm = document.getElementById('project-form');
 const run = () => {
   projectForm.addEventListener('submit', createProject);
   console.log('running...');
+  listenProjectsSelection();
 };
 
 const createProject = (e) => {
@@ -28,17 +29,17 @@ const createProject = (e) => {
   storageObj.addToStorage('Todos-Obj', TodoMain);
   console.log(TodoMain);
   domObj.injectProject(projectName);
-  const projectId = domObj.getProjectId();
-  console.log(projectId);
-  const currentProject = document.getElementById(projectId);
-  currentProject.addEventListener('click', function(){
-    selectProject(currentProject);
-  }, false);
+  listenProjectsSelection();
 };
 
-const selectProject = (project) => {
-  project.classList.remove('not-selected');
-  project.classList.add('selected');
+const listenProjectsSelection = () => {
+  // This funciton should check wich project is selected and
+  // Display or enable the projects addtion.
+  const projectsList = document.getElementById('project-ul');
+  const items = projectsList.getElementsByTagName('li');
+  for(let i=0; i< items.length; i++){
+    console.log(items[i]);
+  }
 }
 
 const start = (() => {
