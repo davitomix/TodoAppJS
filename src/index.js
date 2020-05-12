@@ -10,6 +10,7 @@ import Dom from './dom-utils';
 const domObj = Dom;
 // Storage.
 const TodoMain = {};
+TodoMain['default'] = [];
 const storageObj = Storage;
 // Projects. 
 const projectForm = document.getElementById('project-form');
@@ -21,26 +22,29 @@ const run = () => {
 
 const createProject = (e) => {
   e.preventDefault();
+  const currentStorage = JSON.parse(localStorage['Todos-Obj']);
   const projectName = document.getElementById('project-name').value;
+  if(currentStorage[projectName]) {
+    alert('Already exists a project with this name, Choose another.');
+    return;
+  }
   domObj.clearInput('project-name');
-  console.log(projectName);
-  TodoMain[projectName] = [];
-  storageObj.addToStorage('Todos-Obj', TodoMain);
-  console.log(TodoMain);
+  currentStorage[projectName] = [];
+  storageObj.addToStorage('Todos-Obj', currentStorage);
+  console.log(currentStorage);
   domObj.injectProject(projectName);
-  const delProject = document.getElementById(domObj.getButtonId());
-  console.log(delProject);
-  delProject.addEventListener('click', function() {
-    const selectedProject = delProject.parentElement;
+  const delProjectBtn = document.getElementById(domObj.getButtonId());
+  delProjectBtn.addEventListener('click', function() {
+    const actualStorage = JSON.parse(localStorage['Todos-Obj']);
+    const selectedProject = delProjectBtn.parentElement;
     const h3 = selectedProject.querySelector('h3').innerText.toString();
-    const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    console.log(currentStorage);
+    console.log(actualStorage);
     console.log(h3);
-    delete currentStorage[h3];
-    storageObj.addToStorage('Todos-Obj', currentStorage);
-    console.log(currentStorage);
-    domObj.removeProject(delProject.parentElement.id);
-  }, false);
+    delete actualStorage[h3];
+    storageObj.addToStorage('Todos-Obj', actualStorage);
+    console.log(actualStorage);
+    domObj.removeProject(delProjectBtn.parentElement.id);
+  }, false, { once: true });
 };
 
 const listenProjectsSelection = () => {
