@@ -17,8 +17,7 @@ const projectForm = document.getElementById('project-form');
 const run = () => {
   projectForm.addEventListener('submit', createProject);
   console.log('running...');
-  listenProjectsSelection();
-};
+}; 
 
 const createProject = (e) => {
   e.preventDefault();
@@ -29,7 +28,19 @@ const createProject = (e) => {
   storageObj.addToStorage('Todos-Obj', TodoMain);
   console.log(TodoMain);
   domObj.injectProject(projectName);
-  listenProjectsSelection();
+  const delProject = document.getElementById(domObj.getButtonId());
+  console.log(delProject);
+  delProject.addEventListener('click', function() {
+    const selectedProject = delProject.parentElement;
+    const h3 = selectedProject.querySelector('h3').innerText.toString();
+    const currentStorage = JSON.parse(localStorage['Todos-Obj']);
+    console.log(currentStorage);
+    console.log(h3);
+    delete currentStorage[h3];
+    storageObj.addToStorage('Todos-Obj', currentStorage);
+    console.log(currentStorage);
+    domObj.removeProject(delProject.parentElement.id);
+  }, false);
 };
 
 const listenProjectsSelection = () => {
@@ -38,9 +49,9 @@ const listenProjectsSelection = () => {
   const projectsList = document.getElementById('project-ul');
   const items = projectsList.getElementsByTagName('li');
   for(let i=0; i< items.length; i++){
-    console.log(items[i]);
+    // console.log(items[i]);
   }
-}
+};
 
 const start = (() => {
   // Check if the object existes on LS

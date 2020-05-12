@@ -74,7 +74,7 @@ html {
 
 .project-li {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
@@ -86,6 +86,11 @@ html {
 
 .project-li:hover {
   cursor: pointer;
+}
+
+.project-li button{
+  position: absolute;
+  right: 35px;
 }
 
 .selected {

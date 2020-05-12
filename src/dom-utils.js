@@ -1,12 +1,21 @@
 const Dom = (() => {
   let currentId = 0;
+  let btnId = 0;
 
   const setProjectId = (id) => {
     currentId = id;
   };
 
+  const setButtonId = (id) => {
+    btnId = id;
+  };
+
   const getProjectId = () => {
     return currentId;
+  };
+
+  const getButtonId = () => {
+    return btnId;
   };
 
   const injectProject = (name) => {
@@ -19,8 +28,18 @@ const Dom = (() => {
     projectLi.classList = ['project-li not-selected'];
     const projectH3 = document.createElement('h3');
     projectH3.innerText = name;
+    const deleteBtn = document.createElement('button');
+    deleteBtn.id = idGenerator + 2;
+    setButtonId(deleteBtn.id.toString());
+    deleteBtn.innerHTML = 'X';
     projectLi.appendChild(projectH3);
+    projectLi.appendChild(deleteBtn);
     projectUl.appendChild(projectLi);
+  };
+
+  const removeProject = (id) => {
+    const project = document.getElementById(id);
+    project.remove();
   };
 
   const injectTodo = (name, description, deadline, priority) => {
@@ -89,7 +108,9 @@ const Dom = (() => {
 
   return {
     getProjectId,
+    getButtonId,
     injectProject,
+    removeProject,
     injectTodo,
     clearInput
   };
