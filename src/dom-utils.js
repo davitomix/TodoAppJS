@@ -46,6 +46,8 @@ const Dom = (() => {
   };
 
   const injectTodo = (name, description, deadline, priority) => {
+    let idGenerator = new Date();
+    idGenerator = idGenerator.getTime();
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
     const tableThs = document.createElement('tr');
@@ -65,7 +67,9 @@ const Dom = (() => {
     const tdEdit = document.createElement('td');
     const tdDel = document.createElement('td');
     const editBtn = document.createElement('button');
+    editBtn.id=idGenerator;
     const deleteBtn = document.createElement('button');
+    deleteBtn.id = idGenerator + 2;
     tdEdit.appendChild(editBtn);
     tdDel.appendChild(deleteBtn);
 
