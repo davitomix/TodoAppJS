@@ -12,10 +12,6 @@ const Storage = (() => {
     let result;
     return result = todoObj === undefined ? false : true;
   };
-
-  const getProjectFromStorage = () => {
-
-  };
   
   return {
     removeFromStorage, 

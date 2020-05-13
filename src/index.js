@@ -8,6 +8,7 @@ import Dom from './dom-utils';
 
 //DOM.
 const domObj = Dom;
+const todoObj = Todo;
 // Storage.
 const TodoMain = {};
 TodoMain['default'] = [];
@@ -36,6 +37,7 @@ const createProject = () => {
   console.log(currentStorage);
   domObj.injectProject(projectName);
 
+  // Select Project.
   const selProject = document.getElementById(domObj.getProjectId());
   selProject.addEventListener('click', (e) => {
     e.preventDefault();
@@ -49,13 +51,19 @@ const createProject = () => {
       selProject.classList.remove('selected');
       selProject.classList.add('not-selected');
     }
-    const todoSubmit = document.getElementById('todo-create');
-    todoSubmit.removeEventListener("click", (e) => {}, false);
-    todoSubmit.addEventListener("click", (e) => {
-      
-    }, false);
+    const projectLabel = e.target.querySelector('h3').innerText.toString();
+    const todoForm = document.getElementById('todo-form');
+    todoForm.addEventListener('submit', function _func(e) {
+      e.preventDefault();
+      console.log(projectLabel);
+      todoObj.createTodo(projectLabel);
+      todoForm.removeEventListener('submit', _func);
+      domObj.hideTodoForm();
+      unSelectProjects();
+    });
   }, false); 
 
+  // Delete Project.
   const delProjectBtn = document.getElementById(domObj.getButtonId());
   delProjectBtn.addEventListener('click', (e) => {
     e.stopPropagation();
