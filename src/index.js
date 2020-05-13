@@ -45,15 +45,14 @@ const createProject = (e) => {
     console.log(actualStorage);
     domObj.removeProject(delProjectBtn.parentElement.id);
   }, false, { once: true });
+  listenProjectsSelection();
 };
 
 const listenProjectsSelection = () => {
-  // This funciton should check wich project is selected and
-  // Display or enable the projects addtion.
   const projectsList = document.getElementById('project-ul');
   const items = projectsList.getElementsByTagName('li');
   for(let i=0; i< items.length; i++){
-    // console.log(items[i]);
+    console.log(items[i]);
   }
 };
 
