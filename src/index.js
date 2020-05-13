@@ -49,6 +49,11 @@ const createProject = () => {
       selProject.classList.remove('selected');
       selProject.classList.add('not-selected');
     }
+    const todoSubmit = document.getElementById('todo-create');
+    todoSubmit.removeEventListener("click", (e) => {}, false);
+    todoSubmit.addEventListener("click", (e) => {
+      
+    }, false);
   }, false); 
 
   const delProjectBtn = document.getElementById(domObj.getButtonId());
