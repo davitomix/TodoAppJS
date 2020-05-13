@@ -45,7 +45,18 @@ const createProject = (e) => {
     console.log(actualStorage);
     domObj.removeProject(delProjectBtn.parentElement.id);
   }, false, { once: true });
-  listenProjectsSelection();
+  const selProject = document.getElementById(domObj.getProjectId());
+  selProject.addEventListener('click',function(){
+    listenProjectsSelection();
+    if (selProject.classList.contains('not-selected') ){
+    selProject.classList.remove('not-selected');
+    selProject.classList.add('selected');
+    }
+    else {
+      selProject.classList.remove('selected');
+      selProject.classList.add('not-selected');
+    }
+  }, false, { once: true });  
 };
 
 const listenProjectsSelection = () => {
@@ -53,6 +64,10 @@ const listenProjectsSelection = () => {
   const items = projectsList.getElementsByTagName('li');
   for(let i=0; i< items.length; i++){
     console.log(items[i]);
+    if(items[i].classList.contains('selected')){
+      items[i].classList.remove('selected');
+      items[i].classList.add('not-selected');
+    }
   }
 };
 
