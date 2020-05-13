@@ -1,6 +1,9 @@
 const Dom = (() => {
   let currentId = 0;
   let btnId = 0;
+  const todoForm = document.getElementById('display-form');
+  const textForm = document.getElementById('display-text');
+  const body = document.getElementById('body');
 
   const setProjectId = (id) => {
     currentId = id;
@@ -106,13 +109,29 @@ const Dom = (() => {
     document.getElementById(field).value = "";
   };
 
+  const hideTodoForm = () => {
+      textForm.classList.add('util-cont');
+      textForm.classList.remove('d-none');
+      todoForm.classList.remove('util-cont');
+      todoForm.classList.add('d-none');
+  };
+
+  const showTodoForm = () => {
+      textForm.classList.remove('util-cont');
+      todoForm.classList.remove('d-none');
+      todoForm.classList.add('util-cont');
+      textForm.classList.add('d-none');
+  };
+
   return {
     getProjectId,
     getButtonId,
     injectProject,
     removeProject,
     injectTodo,
-    clearInput
+    clearInput,
+    hideTodoForm,
+    showTodoForm,
   };
 })();
 
