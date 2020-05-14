@@ -25,6 +25,8 @@ const run = () => {
     createProject();
   });
   console.log('running...');
+
+  // Create Todo.
   todoForm.addEventListener('submit', function _func(e) {
     e.preventDefault();
     const projectLabel = projectObj.getProjectLabel();
@@ -36,9 +38,8 @@ const run = () => {
     const removeTodo = document.getElementById(removeTodoId);
     removeTodo.addEventListener('click', (e) => {
       e.preventDefault();
-      storageObj.removeTodoFromStorage();
-      domObj.removeTodoFromDom();
-    }, false,{once : true} ); 
+      console.log('todo erased');
+    }, false, {once : true}); 
   });
 };
 
@@ -66,7 +67,7 @@ const createProject = () => {
     domObj.showTodoForm();
     domObj.unmarkProjects();
     domObj.markProject(selProject.classList.contains('not-selected'), selProject);
-  }, false); 
+  }, false, {once : true}); 
 
   // Delete Project.
   const delProjectBtn = document.getElementById(domObj.getButtonId());
@@ -80,7 +81,8 @@ const createProject = () => {
     storageObj.addToStorage('Todos-Obj', actualStorage);
     console.log(actualStorage);
     domObj.removeProject(selectedProject.id);
-  }, false);
+    domObj.clearTodos();
+  }, false, {once : true});
 };
 
 const start = (() => {
