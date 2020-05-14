@@ -36,7 +36,8 @@ const run = () => {
     const removeTodo = document.getElementById(removeTodoId);
     removeTodo.addEventListener('click', (e) => {
       e.preventDefault();
-
+      storageObj.removeTodoFromStorage();
+      domObj.removeTodoFromDom();
     }, false,{once : true} ); 
   });
 };
