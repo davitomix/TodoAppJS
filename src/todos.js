@@ -1,10 +1,8 @@
-import Dom from './dom-utils';
 import Storage from './storage-utils';
 
 const Todo = (() => {
   const createTodo = (label) => {
     const storageObj = Storage;
-    const domMultiplexor = Dom;
     const taskName = document.getElementById('task-name').value;
     const taskDescription = document.getElementById('task-description').value;
     const taskDeadline = document.getElementById('task-deadline').value;
@@ -18,8 +16,9 @@ const Todo = (() => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
     currentStorage[label].push(newTask);
     storageObj.addToStorage('Todos-Obj', currentStorage);
+    // aqui funcion de escaneo de Todos.
     console.log(currentStorage);
-    domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority);
+    // domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority);
   };
 
   return {

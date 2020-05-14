@@ -14,7 +14,9 @@ const TodoMain = {};
 TodoMain['default'] = [];
 const storageObj = Storage;
 // Projects. 
+const projectObj = Project;
 const projectForm = document.getElementById('project-form');
+let counterProjSelector = 0;
 
 const run = () => {
   projectForm.addEventListener('submit', (e) => {
@@ -24,6 +26,7 @@ const run = () => {
   console.log('running...');
 };
 
+// Create Project.
 const createProject = () => {
   const currentStorage = JSON.parse(localStorage['Todos-Obj']);
   const projectName = document.getElementById('project-name').value;
@@ -41,6 +44,7 @@ const createProject = () => {
   const selProject = document.getElementById(domObj.getProjectId());
   selProject.addEventListener('click', (e) => {
     e.preventDefault();
+    projectObj.scanTodos(e.target.querySelector('h3').innerText);
     domObj.showTodoForm();
     unSelectProjects();
     if (selProject.classList.contains('not-selected') ){
@@ -53,14 +57,17 @@ const createProject = () => {
     }
     const projectLabel = e.target.querySelector('h3').innerText.toString();
     const todoForm = document.getElementById('todo-form');
-    todoForm.addEventListener('submit', function _func(e) {
-      e.preventDefault();
-      console.log(projectLabel);
-      todoObj.createTodo(projectLabel);
-      todoForm.removeEventListener('submit', _func);
-      domObj.hideTodoForm();
-      unSelectProjects();
-    });
+    counterProjSelector++;
+    if(counterProjSelector == 1) {
+      todoForm.addEventListener('submit', function _func(e) {
+        e.preventDefault();
+        console.log(projectLabel);
+        todoObj.createTodo(projectLabel);
+        todoForm.removeEventListener('submit', _func);
+        counterProjSelector = 0;
+        domObj.hideTodoForm();
+      });
+    }
   }, false); 
 
   // Delete Project.
@@ -75,7 +82,7 @@ const createProject = () => {
     storageObj.addToStorage('Todos-Obj', actualStorage);
     console.log(actualStorage);
     domObj.removeProject(delProjectBtn.parentElement.id);
-  }, false); 
+  }, false);
 };
 
 const unSelectProjects = () => {

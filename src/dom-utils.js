@@ -3,7 +3,6 @@ const Dom = (() => {
   let btnId = 0;
   const todoForm = document.getElementById('display-form');
   const textForm = document.getElementById('display-text');
-  const body = document.getElementById('body');
 
   const setProjectId = (id) => {
     currentId = id;
@@ -127,6 +126,13 @@ const Dom = (() => {
       textForm.classList.add('d-none');
   };
 
+  const clearTodos = () => {
+    const todoContainer = document.getElementById('todo-container');
+    while(todoContainer.hasChildNodes()) {
+      todoContainer.removeChild(todoContainer.firstChild);
+    }
+  };
+
   return {
     getProjectId,
     getButtonId,
@@ -136,6 +142,7 @@ const Dom = (() => {
     clearInput,
     hideTodoForm,
     showTodoForm,
+    clearTodos
   };
 })();
 
