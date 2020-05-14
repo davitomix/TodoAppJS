@@ -16,7 +16,8 @@ const storageObj = Storage;
 // Projects. 
 const projectObj = Project;
 const projectForm = document.getElementById('project-form');
-let counterProjSelector = 0;
+// Todos.
+const todoForm = document.getElementById('todo-form');
 
 const run = () => {
   projectForm.addEventListener('submit', (e) => {
@@ -24,6 +25,16 @@ const run = () => {
     createProject();
   });
   console.log('running...');
+  todoForm.addEventListener('submit', function _func(e) {
+    e.preventDefault();
+    const projectLabel = projectObj.getProjectLabel();
+    console.log(projectLabel);
+    todoObj.createTodo(projectLabel);
+    projectObj.scanTodos(projectLabel);
+    const removeTodoId = domObj.getRemoveTodoId();
+    console.log(removeTodoId);
+    domObj.hideTodoForm();
+  });
 };
 
 // Create Project.
@@ -44,30 +55,12 @@ const createProject = () => {
   const selProject = document.getElementById(domObj.getProjectId());
   selProject.addEventListener('click', (e) => {
     e.preventDefault();
-    projectObj.scanTodos(e.target.querySelector('h3').innerText);
+    const labelProject = e.target.querySelector('h3').innerText;
+    projectObj.scanTodos(labelProject);
+    projectObj.setProjectLabel(labelProject);
     domObj.showTodoForm();
-    unSelectProjects();
-    if (selProject.classList.contains('not-selected') ){
-      selProject.classList.remove('not-selected');
-      selProject.classList.add('selected');
-    }
-    else {
-      selProject.classList.remove('selected');
-      selProject.classList.add('not-selected');
-    }
-    const projectLabel = e.target.querySelector('h3').innerText.toString();
-    const todoForm = document.getElementById('todo-form');
-    counterProjSelector++;
-    if(counterProjSelector == 1) {
-      todoForm.addEventListener('submit', function _func(e) {
-        e.preventDefault();
-        console.log(projectLabel);
-        todoObj.createTodo(projectLabel);
-        todoForm.removeEventListener('submit', _func);
-        counterProjSelector = 0;
-        domObj.hideTodoForm();
-      });
-    }
+    domObj.unmarkProjects();
+    domObj.markProject(selProject.classList.contains('not-selected'), selProject);
   }, false); 
 
   // Delete Project.
@@ -77,23 +70,12 @@ const createProject = () => {
     domObj.hideTodoForm();
     const actualStorage = JSON.parse(localStorage['Todos-Obj']);
     const selectedProject = delProjectBtn.parentElement;
-    const h3 = selectedProject.querySelector('h3').innerText.toString();
+    const h3 = selectedProject.querySelector('h3').innerText;
     delete actualStorage[h3];
     storageObj.addToStorage('Todos-Obj', actualStorage);
     console.log(actualStorage);
-    domObj.removeProject(delProjectBtn.parentElement.id);
+    domObj.removeProject(selectedProject.id);
   }, false);
-};
-
-const unSelectProjects = () => {
-  const projectsList = document.getElementById('project-ul');
-  const items = projectsList.getElementsByTagName('li');
-  for(let i=0; i< items.length; i++){
-    if(items[i].classList.contains('selected')){
-      items[i].classList.remove('selected');
-      items[i].classList.add('not-selected');
-    }
-  }
 };
 
 const start = (() => {

@@ -2,6 +2,7 @@ import Dom from "./dom-utils";
 
 const Project = (() => {
   const domMultiplexor = Dom;
+  let currentLabel = 0;
 
   const scanTodos = (label) => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
@@ -18,8 +19,18 @@ const Project = (() => {
     }
   };
 
+  const setProjectLabel = (projectLabel) => {
+    currentLabel = projectLabel;
+  };
+
+  const getProjectLabel = () => {
+    return currentLabel;
+  };
+
   return {
-    scanTodos
+    scanTodos,
+    setProjectLabel,
+    getProjectLabel
   };
 })();
 

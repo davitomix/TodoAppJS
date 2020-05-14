@@ -1,6 +1,7 @@
 const Dom = (() => {
   let currentId = 0;
   let btnId = 0;
+  let removeTodoId = 0;
   const todoForm = document.getElementById('display-form');
   const textForm = document.getElementById('display-text');
 
@@ -8,16 +9,24 @@ const Dom = (() => {
     currentId = id;
   };
 
-  const setButtonId = (id) => {
-    btnId = id;
-  };
-
   const getProjectId = () => {
     return currentId;
   };
 
+  const setButtonId = (id) => {
+    btnId = id;
+  };
+
   const getButtonId = () => {
     return btnId;
+  };
+
+  const setRemoveTodoId = (id) => {
+    removeTodoId = id;
+  };
+
+  const getRemoveTodoId = () => {
+    return removeTodoId;
   };
 
   const injectProject = (name) => {
@@ -66,9 +75,10 @@ const Dom = (() => {
     const tdEdit = document.createElement('td');
     const tdDel = document.createElement('td');
     const editBtn = document.createElement('button');
-    editBtn.id=idGenerator;
+    editBtn.id = idGenerator;
     const deleteBtn = document.createElement('button');
     deleteBtn.id = idGenerator + 2;
+    setRemoveTodoId(deleteBtn.id.toString());
     tdEdit.appendChild(editBtn);
     tdDel.appendChild(deleteBtn);
 
@@ -126,6 +136,28 @@ const Dom = (() => {
       textForm.classList.add('d-none');
   };
 
+  const unmarkProjects = () => {
+    const projectsList = document.getElementById('project-ul');
+    const items = projectsList.getElementsByTagName('li');
+    for(let i=0; i< items.length; i++){
+      if(items[i].classList.contains('selected')){
+        items[i].classList.remove('selected');
+        items[i].classList.add('not-selected');
+      }
+    }
+  };
+
+  const markProject = (value, project) => {
+    if(value){
+      project.classList.remove('not-selected');
+      project.classList.add('selected');
+    }
+    else{
+      project.classList.remove('selected');
+      project.classList.add('not-selected');
+    }
+  };
+
   const clearTodos = () => {
     const todoContainer = document.getElementById('todo-container');
     while(todoContainer.hasChildNodes()) {
@@ -136,12 +168,15 @@ const Dom = (() => {
   return {
     getProjectId,
     getButtonId,
+    getRemoveTodoId,
     injectProject,
     removeProject,
     injectTodo,
     clearInput,
     hideTodoForm,
     showTodoForm,
+    unmarkProjects,
+    markProject,
     clearTodos
   };
 })();
