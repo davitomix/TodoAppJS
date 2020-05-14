@@ -31,9 +31,13 @@ const run = () => {
     console.log(projectLabel);
     todoObj.createTodo(projectLabel);
     projectObj.scanTodos(projectLabel);
-    const removeTodoId = domObj.getRemoveTodoId();
-    console.log(removeTodoId);
     domObj.hideTodoForm();
+    const removeTodoId = domObj.getRemoveTodoId();
+    const removeTodo = document.getElementById(removeTodoId);
+    removeTodo.addEventListener('click', (e) => {
+      e.preventDefault();
+
+    }, false,{once : true} ); 
   });
 };
 
