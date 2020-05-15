@@ -19,7 +19,9 @@ const Project = (() => {
         domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority, taskBoxId, taskDeleteBtnId);
         const todoBox = document.getElementById(taskBoxId);
         if(!todoBox.onclick){
-          console.log('event listener not already added');
+          todoBox.addEventListener('click', function deleteTodo(e) {
+            console.log('ok');
+          }, false, {once : true})
         }
       }
     }
