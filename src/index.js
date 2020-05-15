@@ -41,7 +41,6 @@ const run = () => {
 
   // Cancel Todo.
   todoCancel.addEventListener('click', (e) => {
-    console.log('hello world');
     domObj.clearTodoForm();
     domObj.hideTodoForm();
     domObj.unmarkProjects();

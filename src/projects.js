@@ -1,4 +1,6 @@
 import Dom from "./dom-utils";
+import Storage from './storage-utils';
+import Todo from './todos';
 
 const Project = (() => {
   const domMultiplexor = Dom;
@@ -17,13 +19,14 @@ const Project = (() => {
         const taskBoxId = currentProject[elemtn].boxid;
         const taskDeleteBtnId = currentProject[elemtn].delid;
         domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority, taskBoxId, taskDeleteBtnId);
-        const todoBox = document.getElementById(taskBoxId);
-        if(!todoBox.onclick){
-          todoBox.addEventListener('click', function deleteTodo(e) {
-            console.log('ok');
-          }, false, {once : true})
-        } else{
-          todoBox.removeEventListener('click', deleteTodo);
+        const todoDeleteBtn = document.getElementById(taskDeleteBtnId);
+        if(!todoDeleteBtn.onclick) {
+          todoDeleteBtn.addEventListener('click', function deleteTodo(e) {
+            const todoObj = Todo;
+            todoObj.removeTodo(currentProject, label, taskBoxId);
+          }, false, {once : true});
+        } else {
+          todoDeleteBtn.removeEventListener('click', deleteTodo);
         }
       }
     }

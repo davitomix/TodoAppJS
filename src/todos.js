@@ -1,13 +1,15 @@
 import Storage from './storage-utils';
+import Project from './projects';
 
 const Todo = (() => {
   let taskBoxId = 0;
   let taskDeleteBtnId = 0;
-
+  const projectObj = Project;
+  const storageObj = Storage;
+  
   const createTodo = (label) => {
     let idGenerator = new Date();
     idGenerator = idGenerator.getTime();
-    const storageObj = Storage;
     const taskBoxId = idGenerator;
     const taskDeleteBtnId = idGenerator + 2;
     const taskName = document.getElementById('task-name').value;
@@ -28,6 +30,17 @@ const Todo = (() => {
     console.log(currentStorage);
   };
 
+  const removeTodo = (currentProject, label, taskBoxId) => {
+    const currentStorage = JSON.parse(localStorage['Todos-Obj']);
+    const toDoIndex = currentProject.findIndex(obj => {
+      return obj.boxid == taskBoxId;
+    });
+    currentProject.splice(toDoIndex, 1);
+    currentStorage[label] = currentProject;
+    storageObj.addToStorage('Todos-Obj', currentStorage);
+    projectObj.scanTodos(label);
+  };
+
   const setBoxId = (id) => {
     taskBoxId = id;
   };
@@ -45,7 +58,8 @@ const Todo = (() => {
   };
 
   return {
-    createTodo
+    createTodo,
+    removeTodo
   };
 })();
 
