@@ -14,7 +14,9 @@ const Project = (() => {
         const taskDescription = currentProject[elemtn].description;
         const taskDeadline = currentProject[elemtn].deadline;
         const taskPriority = currentProject[elemtn].priority;
-        domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority);
+        const taskBoxId = currentProject[elemtn].boxid;
+        const taskDeleteBtnId = currentProject[elemtn].delid;
+        domMultiplexor.injectTodo(taskName, taskDescription, taskDeadline, taskPriority, taskBoxId, taskDeleteBtnId);
       }
     }
   };

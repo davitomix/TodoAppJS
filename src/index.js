@@ -18,6 +18,7 @@ const projectObj = Project;
 const projectForm = document.getElementById('project-form');
 // Todos.
 const todoForm = document.getElementById('todo-form');
+const todoCancel = document.getElementById('todo-cancel');
 
 const run = () => {
   projectForm.addEventListener('submit', (e) => {
@@ -32,11 +33,19 @@ const run = () => {
     const projectLabel = projectObj.getProjectLabel();
     console.log(projectLabel);
     todoObj.createTodo(projectLabel);
-    domObj.clearTodos();
     projectObj.scanTodos(projectLabel);
+    domObj.clearTodoForm();
     domObj.hideTodoForm();
     domObj.unmarkProjects();
-  });
+  }, false, {once : true});
+
+  // Cancel Todo.
+  todoCancel.addEventListener('click', (e) => {
+    console.log('hello world');
+    domObj.clearTodoForm();
+    domObj.hideTodoForm();
+    domObj.unmarkProjects();
+  }, false, {once : true});
 };
 
 // Create Project.
@@ -44,7 +53,8 @@ const createProject = () => {
   const currentStorage = JSON.parse(localStorage['Todos-Obj']);
   const projectName = document.getElementById('project-name').value;
   if(currentStorage[projectName]) {
-    alert('Already exists a project with this name, Choose another.');
+    alert('Already exists a project with this name. Please choose another.');
+    domObj.clearInput('project-name');
     return;
   }
   domObj.clearInput('project-name');
@@ -56,9 +66,9 @@ const createProject = () => {
   // Select Project.
   const selProject = document.getElementById(domObj.getProjectId());
   selProject.addEventListener('click', (e) => {
-    e.preventDefault();
+    const actualStorage = JSON.parse(localStorage['Todos-Obj']);
+    console.log(actualStorage);
     const labelProject = e.target.querySelector('h3').innerText;
-    domObj.clearTodos();
     projectObj.scanTodos(labelProject);
     projectObj.setProjectLabel(labelProject);
     domObj.showTodoForm();

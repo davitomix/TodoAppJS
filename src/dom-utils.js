@@ -1,7 +1,6 @@
 const Dom = (() => {
   let currentId = 0;
   let btnId = 0;
-  let removeTodoId = 0;
   const todoForm = document.getElementById('display-form');
   const textForm = document.getElementById('display-text');
 
@@ -45,9 +44,10 @@ const Dom = (() => {
     project.remove();
   };
 
-  const injectTodo = (name, description, deadline, priority) => {
+  const injectTodo = (name, description, deadline, priority, tableId, delId) => {
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
+    todoTable.id = tableId;
     const tableThs = document.createElement('tr');
     const tableTds = document.createElement('tr');
 
@@ -66,7 +66,7 @@ const Dom = (() => {
     const tdDel = document.createElement('td');
     const editBtn = document.createElement('button');
     const deleteBtn = document.createElement('button');
-
+    deleteBtn.id = delId;
     tdEdit.appendChild(editBtn);
     tdDel.appendChild(deleteBtn);
 
@@ -108,6 +108,13 @@ const Dom = (() => {
 
   const clearInput = (field) => {
     document.getElementById(field).value = "";
+  };
+
+  const clearTodoForm = () => {
+    const taskName = document.getElementById('task-name').value = null;
+    const taskDescription = document.getElementById('task-description').value = null;
+    const taskDeadline = document.getElementById('task-deadline').value = null;
+    const taskPriority = document.getElementById('task-priority').value = 'low';
   };
 
   const hideTodoForm = () => {
@@ -160,11 +167,12 @@ const Dom = (() => {
     removeProject,
     injectTodo,
     clearInput,
+    clearTodoForm,
     hideTodoForm,
     showTodoForm,
     unmarkProjects,
     markProject,
-    clearTodos
+    clearTodos,
   };
 })();
 
