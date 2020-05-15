@@ -22,6 +22,8 @@ const Project = (() => {
           todoBox.addEventListener('click', function deleteTodo(e) {
             console.log('ok');
           }, false, {once : true})
+        } else{
+          todoBox.removeEventListener('click', deleteTodo);
         }
       }
     }
