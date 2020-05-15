@@ -21,14 +21,6 @@ const Dom = (() => {
     return btnId;
   };
 
-  const setRemoveTodoId = (id) => {
-    removeTodoId = id;
-  };
-
-  const getRemoveTodoId = () => {
-    return removeTodoId;
-  };
-
   const injectProject = (name) => {
     let idGenerator = new Date();
     idGenerator = idGenerator.getTime();
@@ -54,8 +46,6 @@ const Dom = (() => {
   };
 
   const injectTodo = (name, description, deadline, priority) => {
-    let idGenerator = new Date();
-    idGenerator = idGenerator.getTime();
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
     const tableThs = document.createElement('tr');
@@ -75,10 +65,8 @@ const Dom = (() => {
     const tdEdit = document.createElement('td');
     const tdDel = document.createElement('td');
     const editBtn = document.createElement('button');
-    editBtn.id = idGenerator;
     const deleteBtn = document.createElement('button');
-    deleteBtn.id = idGenerator + 2;
-    setRemoveTodoId(deleteBtn.id.toString());
+
     tdEdit.appendChild(editBtn);
     tdDel.appendChild(deleteBtn);
 
@@ -168,7 +156,6 @@ const Dom = (() => {
   return {
     getProjectId,
     getButtonId,
-    getRemoveTodoId,
     injectProject,
     removeProject,
     injectTodo,

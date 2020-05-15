@@ -32,14 +32,10 @@ const run = () => {
     const projectLabel = projectObj.getProjectLabel();
     console.log(projectLabel);
     todoObj.createTodo(projectLabel);
+    domObj.clearTodos();
     projectObj.scanTodos(projectLabel);
     domObj.hideTodoForm();
-    const removeTodoId = domObj.getRemoveTodoId();
-    const removeTodo = document.getElementById(removeTodoId);
-    removeTodo.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('todo erased');
-    }, false, {once : true}); 
+    domObj.unmarkProjects();
   });
 };
 
@@ -62,6 +58,7 @@ const createProject = () => {
   selProject.addEventListener('click', (e) => {
     e.preventDefault();
     const labelProject = e.target.querySelector('h3').innerText;
+    domObj.clearTodos();
     projectObj.scanTodos(labelProject);
     projectObj.setProjectLabel(labelProject);
     domObj.showTodoForm();
