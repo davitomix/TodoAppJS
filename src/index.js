@@ -10,8 +10,6 @@ import Dom from './dom-utils';
 const domObj = Dom;
 const todoObj = Todo;
 // Storage.
-const TodoMain = {};
-TodoMain['default'] = [];
 const storageObj = Storage;
 // Projects. 
 const projectObj = Project;
@@ -22,6 +20,7 @@ const todoCancel = document.getElementById('todo-cancel');
 const todoEdit = document.getElementById('todo-save');
 
 const run = () => {
+  // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
     createProject();
@@ -78,13 +77,13 @@ const createProject = () => {
 
   // Select Project.
   const selProject = document.getElementById(domObj.getProjectId());
+  const labelProject = selProject.querySelector('h3').innerText;
   setTimeout(() => {console.log('mini pause')}, 50);
   selProject.addEventListener('click', (e) => {
     domObj.clearTodoForm();
     domObj.hideTodoSaveBtn();
     const actualStorage = JSON.parse(localStorage['Todos-Obj']);
     console.log(actualStorage);
-    const labelProject = e.target.querySelector('h3').innerText;
     projectObj.scanTodos(labelProject);
     projectObj.setProjectLabel(labelProject);
     domObj.showTodoForm();
@@ -109,13 +108,22 @@ const createProject = () => {
 };
 
 const start = (() => {
-  // Check if the object existes on LS
-  // Todo: Add conditional statement [...]
-  const result = storageObj.checkTodoObj();
-  console.log(result);
 
-  storageObj.removeFromStorage('Todos-Obj')
+  const result = storageObj.todoObjExists();
+  const TodoMain = {};
+  storageObj.removeFromStorage('Todos-Obj');
   storageObj.addToStorage('Todos-Obj', TodoMain);
-
+  // if(!result){
+  //   const TodoMain = {};
+  //   //TodoMain['default'] = [];
+  //   storageObj.addToStorage('Todos-Obj', TodoMain);
+  // }
+  // else {
+  //   const actualStorage = JSON.parse(localStorage['Todos-Obj']);
+  //   const storageKeys = Object.keys(actualStorage);
+  //   for(const prjct in storageKeys) {
+  //     domObj.injectProject(storageKeys[prjct]);
+  //   }
+  // }
   run();
 })();

@@ -7,7 +7,7 @@ const Storage = (() => {
     localStorage[key] = JSON.stringify(item);
   };
 
-  const checkTodoObj = () => {
+  const todoObjExists = () => {
     const todoObj = localStorage['Todos-Obj'];
     let result;
     return result = todoObj === undefined ? false : true;
@@ -16,7 +16,7 @@ const Storage = (() => {
   return {
     removeFromStorage, 
     addToStorage,
-    checkTodoObj,
+    todoObjExists,
   }
 })();
 

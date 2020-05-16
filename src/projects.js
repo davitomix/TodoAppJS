@@ -18,9 +18,11 @@ const Project = (() => {
         const taskBoxId = currentProject[elemtn].boxid;
         const taskDeleteBtnId = currentProject[elemtn].delid;
         const taskEditBtnId = currentProject[elemtn].ediid;
-        domObj.injectTodo(taskName, taskDescription, taskDeadline, taskPriority, taskBoxId, taskDeleteBtnId, taskEditBtnId);
+        const taskDoneBtnId = currentProject[elemtn].donid;
+        domObj.injectTodo(taskName, taskDescription, taskDeadline, taskPriority, taskBoxId, taskDeleteBtnId, taskEditBtnId, taskDoneBtnId);
         const todoDeleteBtn = document.getElementById(taskDeleteBtnId);
         const todoEditBtn = document.getElementById(taskEditBtnId);
+        const todoDoneBtn = document.getElementById(taskDoneBtnId);
         if(!todoDeleteBtn.onclick) {
           todoDeleteBtn.addEventListener('click', function deleteTodo(e) {
             const todoObj = Todo;
@@ -32,7 +34,6 @@ const Project = (() => {
         if(!todoEditBtn.onclick) {
           todoEditBtn.addEventListener('click', function deleteTodo(e) {
             const todoObj = Todo;
-            console.log('edit clicked');
             domObj.showTodoForm();
             domObj.showTodoSaveBtn();
             domObj.fillTodoForm(taskName, taskDescription, taskDeadline, taskPriority);
@@ -40,6 +41,15 @@ const Project = (() => {
           }, false, {once : true});
         } else {
           todoEditBtn.removeEventListener('click', deleteTodo);
+        }
+        if(!todoDoneBtn.onclick) {
+          todoDoneBtn.addEventListener('click', function deleteTodo(e) {
+            const todoObj = Todo;
+            todoObj.removeTodo(currentProject, label, taskBoxId);
+            alert('Task Completed !');
+          }, false, {once : true});
+        } else {
+          todoDoneBtn.removeEventListener('click', deleteTodo);
         }
       }
     }

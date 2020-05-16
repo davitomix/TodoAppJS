@@ -16,6 +16,7 @@ const Todo = (() => {
     const taskBoxId = idGenerator;
     const taskDeleteBtnId = idGenerator + 1;
     const taskEditBtnId = idGenerator + 2;
+    const taskDoneBtnId = idGenerator + 3;
     const taskName = document.getElementById('task-name').value;
     const taskDescription = document.getElementById('task-description').value;
     const taskDeadline = document.getElementById('task-deadline').value;
@@ -24,6 +25,7 @@ const Todo = (() => {
       boxid: taskBoxId,
       delid: taskDeleteBtnId,
       ediid: taskEditBtnId,
+      donid: taskDoneBtnId,
       name: taskName,
       description: taskDescription,
       deadline: taskDeadline,

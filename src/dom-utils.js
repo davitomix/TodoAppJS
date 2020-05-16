@@ -46,7 +46,7 @@ const Dom = (() => {
     project.remove();
   };
 
-  const injectTodo = (name, description, deadline, priority, tableId, delId, ediId) => {
+  const injectTodo = (name, description, deadline, priority, tableId, delId, ediId, doneId) => {
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
     todoTable.id = tableId;
@@ -59,6 +59,7 @@ const Dom = (() => {
     const thPrior = document.createElement('th');
     const thEdit = document.createElement('th');
     const thDel = document.createElement('th');
+    const thDone = document.createElement('th');
 
     const tdName = document.createElement('td');
     const tdDesc = document.createElement('td');
@@ -66,19 +67,21 @@ const Dom = (() => {
     const tdPrior = document.createElement('td');
     const tdEdit = document.createElement('td');
     const tdDel = document.createElement('td');
+    const tdDone = document.createElement('td');
     const editBtn = document.createElement('button');
     editBtn.id = ediId;
     const deleteBtn = document.createElement('button');
     deleteBtn.id = delId;
+    const doneBtn = document.createElement('button');
+    doneBtn.id = doneId;
     tdEdit.appendChild(editBtn);
     tdDel.appendChild(deleteBtn);
+    tdDone.appendChild(doneBtn);
 
-    thName.innerHTML = 'Name';
-    thDesc.innerHTML = 'Description';
-    thDead.innerHTML = 'Deadline';
-    thPrior.innerHTML = 'Priority';
-    thEdit.innerText = 'Edit';
-    thDel.innerText = 'Delete';
+    thName.innerText = 'Name';
+    thDesc.innerText = 'Description';
+    thDead.innerText = 'Deadline';
+    thPrior.innerText = 'Priority';
     
     tdName.innerHTML = name;
     tdDesc.innerHTML = description;
@@ -88,6 +91,8 @@ const Dom = (() => {
     editBtn.className = 'edit-todo-btn'
     deleteBtn.innerHTML = 'delete';
     deleteBtn.className = 'delete-todo-btn';
+    doneBtn.innerHTML = 'complete';
+    doneBtn.className = 'done-todo-btn';
 
     tableThs.appendChild(thName);
     tableThs.appendChild(thDesc);
@@ -95,6 +100,7 @@ const Dom = (() => {
     tableThs.appendChild(thPrior);
     tableThs.appendChild(thEdit);
     tableThs.appendChild(thDel);
+    tableThs.appendChild(thDone);
 
     tableTds.appendChild(tdName);
     tableTds.appendChild(tdDesc);
@@ -102,6 +108,7 @@ const Dom = (() => {
     tableTds.appendChild(tdPrior);
     tableTds.appendChild(tdEdit);
     tableTds.appendChild(tdDel);
+    tableTds.appendChild(tdDone);
 
     todoTable.appendChild(tableThs);
     todoTable.appendChild(tableTds);
