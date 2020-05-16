@@ -19,6 +19,7 @@ const projectForm = document.getElementById('project-form');
 // Todos.
 const todoForm = document.getElementById('todo-form');
 const todoCancel = document.getElementById('todo-cancel');
+const todoEdit = document.getElementById('todo-save');
 
 const run = () => {
   projectForm.addEventListener('submit', (e) => {
@@ -31,7 +32,6 @@ const run = () => {
   todoForm.addEventListener('submit', function _func(e) {
     e.preventDefault();
     const projectLabel = projectObj.getProjectLabel();
-    console.log(projectLabel);
     todoObj.createTodo(projectLabel);
     projectObj.scanTodos(projectLabel);
     domObj.clearTodoForm();
@@ -44,7 +44,21 @@ const run = () => {
     domObj.clearTodoForm();
     domObj.hideTodoForm();
     domObj.unmarkProjects();
+    domObj.hideTodoSaveBtn();
   }, false, {once : true});
+
+  // Edit Todo.
+  todoEdit.addEventListener('click', (e) => {
+    console.log('saved todo');
+    const newName = document.getElementById('task-name').value;
+    const newDescription = document.getElementById('task-description').value;
+    const newDeadline = document.getElementById('task-deadline').value;
+    const newPriority = document.getElementById('task-priority').value;
+    todoObj.updateTodo(newName, newDescription, newDeadline, newPriority);
+    domObj.hideTodoForm();
+    domObj.hideTodoSaveBtn();
+    domObj.clearTodoForm();
+  }, false, {once : true})
 };
 
 // Create Project.
@@ -64,7 +78,10 @@ const createProject = () => {
 
   // Select Project.
   const selProject = document.getElementById(domObj.getProjectId());
+  setTimeout(() => {console.log('mini pause')}, 50);
   selProject.addEventListener('click', (e) => {
+    domObj.clearTodoForm();
+    domObj.hideTodoSaveBtn();
     const actualStorage = JSON.parse(localStorage['Todos-Obj']);
     console.log(actualStorage);
     const labelProject = e.target.querySelector('h3').innerText;

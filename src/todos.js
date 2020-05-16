@@ -6,12 +6,16 @@ const Todo = (() => {
   let taskDeleteBtnId = 0;
   const projectObj = Project;
   const storageObj = Storage;
-  
+  let editTodoProject = null;
+  let editTodoLabel = null;
+  let editTodoIndex = null;
+
   const createTodo = (label) => {
     let idGenerator = new Date();
     idGenerator = idGenerator.getTime();
     const taskBoxId = idGenerator;
-    const taskDeleteBtnId = idGenerator + 2;
+    const taskDeleteBtnId = idGenerator + 1;
+    const taskEditBtnId = idGenerator + 2;
     const taskName = document.getElementById('task-name').value;
     const taskDescription = document.getElementById('task-description').value;
     const taskDeadline = document.getElementById('task-deadline').value;
@@ -19,6 +23,7 @@ const Todo = (() => {
     const newTask = {
       boxid: taskBoxId,
       delid: taskDeleteBtnId,
+      ediid: taskEditBtnId,
       name: taskName,
       description: taskDescription,
       deadline: taskDeadline,
@@ -41,6 +46,26 @@ const Todo = (() => {
     projectObj.scanTodos(label);
   };
 
+  const setEditTodoId = (currentProject, label ,id) => {
+    const toDoIndex = currentProject.findIndex(obj => {
+      return obj.boxid == id;
+    });
+    editTodoProject = currentProject;
+    editTodoLabel = label;
+    editTodoIndex = toDoIndex;
+  };
+
+  const updateTodo = (newName, newDescription, newDeadline, newPriority) => {
+    editTodoProject[editTodoIndex].name = newName;
+    editTodoProject[editTodoIndex].description = newDescription;
+    editTodoProject[editTodoIndex].deadline = newDeadline;
+    editTodoProject[editTodoIndex].priority = newPriority;
+    const currentStorage = JSON.parse(localStorage['Todos-Obj']);
+    currentStorage[editTodoLabel] = editTodoProject;
+    storageObj.addToStorage('Todos-Obj', currentStorage);
+    projectObj.scanTodos(editTodoLabel);
+  };
+
   const setBoxId = (id) => {
     taskBoxId = id;
   };
@@ -59,7 +84,9 @@ const Todo = (() => {
 
   return {
     createTodo,
-    removeTodo
+    removeTodo,
+    setEditTodoId,
+    updateTodo
   };
 })();
 

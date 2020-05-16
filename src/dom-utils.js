@@ -3,6 +3,8 @@ const Dom = (() => {
   let btnId = 0;
   const todoForm = document.getElementById('display-form');
   const textForm = document.getElementById('display-text');
+  const saveTodoBtn = document.getElementById('todo-save');
+  const createTodoBtn = document.getElementById('todo-create');
 
   const setProjectId = (id) => {
     currentId = id;
@@ -31,7 +33,7 @@ const Dom = (() => {
     const projectH3 = document.createElement('h3');
     projectH3.innerText = name;
     const deleteBtn = document.createElement('button');
-    deleteBtn.id = idGenerator + 2;
+    deleteBtn.id = idGenerator + 1;
     setButtonId(deleteBtn.id.toString());
     deleteBtn.innerHTML = 'X';
     projectLi.appendChild(projectH3);
@@ -44,7 +46,7 @@ const Dom = (() => {
     project.remove();
   };
 
-  const injectTodo = (name, description, deadline, priority, tableId, delId) => {
+  const injectTodo = (name, description, deadline, priority, tableId, delId, ediId) => {
     const todoContainer = document.getElementById('todo-container');
     const todoTable = document.createElement('table');
     todoTable.id = tableId;
@@ -65,6 +67,7 @@ const Dom = (() => {
     const tdEdit = document.createElement('td');
     const tdDel = document.createElement('td');
     const editBtn = document.createElement('button');
+    editBtn.id = ediId;
     const deleteBtn = document.createElement('button');
     deleteBtn.id = delId;
     tdEdit.appendChild(editBtn);
@@ -110,11 +113,28 @@ const Dom = (() => {
     document.getElementById(field).value = "";
   };
 
+  const fillTodoForm = (taskName, taskDescription, taskDeadline, taskPriority) => {
+    const todoName = document.getElementById('task-name').value = taskName;
+    const todoDescription = document.getElementById('task-description').value = taskDescription;
+    const todoDeadline = document.getElementById('task-deadline').value = taskDeadline;
+    const todoPriority = document.getElementById('task-priority').value = taskPriority;
+  };
+
   const clearTodoForm = () => {
     const taskName = document.getElementById('task-name').value = null;
     const taskDescription = document.getElementById('task-description').value = null;
     const taskDeadline = document.getElementById('task-deadline').value = null;
     const taskPriority = document.getElementById('task-priority').value = 'low';
+  };
+
+  const showTodoSaveBtn = () => {
+    saveTodoBtn.classList.remove('d-none');
+    createTodoBtn.classList.add('d-none');
+  };
+
+  const hideTodoSaveBtn = () => {
+    saveTodoBtn.classList.add('d-none');
+    createTodoBtn.classList.remove('d-none');
   };
 
   const hideTodoForm = () => {
@@ -167,7 +187,10 @@ const Dom = (() => {
     removeProject,
     injectTodo,
     clearInput,
+    fillTodoForm,
     clearTodoForm,
+    showTodoSaveBtn,
+    hideTodoSaveBtn,
     hideTodoForm,
     showTodoForm,
     unmarkProjects,
