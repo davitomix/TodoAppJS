@@ -20,19 +20,24 @@ const todoCancel = document.getElementById('todo-cancel');
 const todoEdit = document.getElementById('todo-save');
 
 const run = () => {
+  console.log('running...');
+
   // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    createProject();
+    projectObj.createProject();
+    domObj.clearProjects();
+    projectObj.scanProjects();
+    console.log(JSON.parse(localStorage['Todos-Obj']));
   });
-  console.log('running...');
 
   // Create Todo.
   todoForm.addEventListener('submit', function _func(e) {
     e.preventDefault();
-    const projectLabel = projectObj.getProjectLabel();
-    todoObj.createTodo(projectLabel);
-    projectObj.scanTodos(projectLabel);
+    const projectId = projectObj.getProjectId();
+    console.log(projectId);
+    todoObj.createTodo(projectId);
+    projectObj.scanTodos(projectId);
     domObj.clearTodoForm();
     domObj.hideTodoForm();
     domObj.unmarkProjects();
@@ -61,6 +66,7 @@ const run = () => {
 };
 
 // Create Project.
+/*
 const createProject = () => {
   const currentStorage = JSON.parse(localStorage['Todos-Obj']);
   const projectName = document.getElementById('project-name').value;
@@ -106,13 +112,13 @@ const createProject = () => {
     domObj.clearTodos();
   }, false, {once : true});
 };
+*/
 
 const start = (() => {
-
   const result = storageObj.todoObjExists();
-  const TodoMain = {};
+  const todoMain = new Array;
   storageObj.removeFromStorage('Todos-Obj');
-  storageObj.addToStorage('Todos-Obj', TodoMain);
+  storageObj.addToStorage('Todos-Obj', todoMain);
   // if(!result){
   //   const TodoMain = {};
   //   //TodoMain['default'] = [];

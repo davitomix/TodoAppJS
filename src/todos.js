@@ -10,7 +10,7 @@ const Todo = (() => {
   let editTodoLabel = null;
   let editTodoIndex = null;
 
-  const createTodo = (label) => {
+  const createTodo = (projectId) => {
     let idGenerator = new Date();
     idGenerator = idGenerator.getTime();
     const taskBoxId = idGenerator;
@@ -32,7 +32,11 @@ const Todo = (() => {
       priority: taskPriority,
     };
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    currentStorage[label].push(newTask);
+    const projectIndex = currentStorage.findIndex(obj => {
+      return obj.projectLiId == projectId;
+    });
+    console.log(projectIndex)
+    currentStorage[projectIndex].projectTodos.push(newTask);
     storageObj.addToStorage('Todos-Obj', currentStorage);
     console.log(currentStorage);
   };

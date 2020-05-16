@@ -22,18 +22,16 @@ const Dom = (() => {
     return btnId;
   };
 
-  const injectProject = (name) => {
-    let idGenerator = new Date();
-    idGenerator = idGenerator.getTime();
+  const injectProject = (proName, proLiId, proDelId) => {
     const projectUl = document.getElementById('project-ul');
     const projectLi = document.createElement('li');
-    projectLi.id = idGenerator;
+    projectLi.id = proLiId;
     setProjectId(projectLi.id.toString());
     projectLi.classList = ['project-li not-selected'];
     const projectH3 = document.createElement('h3');
-    projectH3.innerText = name;
+    projectH3.innerText = proName;
     const deleteBtn = document.createElement('button');
-    deleteBtn.id = idGenerator + 1;
+    deleteBtn.id = proDelId;
     setButtonId(deleteBtn.id.toString());
     deleteBtn.innerHTML = 'X';
     projectLi.appendChild(projectH3);
@@ -187,6 +185,13 @@ const Dom = (() => {
     }
   };
 
+  const clearProjects = () => {
+    const projectsContainer = document.getElementById('project-ul');
+    while(projectsContainer.hasChildNodes()) {
+      projectsContainer.removeChild(projectsContainer.firstChild);
+    }
+  };
+
   return {
     getProjectId,
     getButtonId,
@@ -203,6 +208,7 @@ const Dom = (() => {
     unmarkProjects,
     markProject,
     clearTodos,
+    clearProjects
   };
 })();
 
