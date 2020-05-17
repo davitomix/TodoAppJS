@@ -47,7 +47,7 @@ const Project = (() => {
         const proDelId = currentStorage[ele].projectDeleteBtnId;
         domObj.injectProject(proName, proLiId, proDelId);
         
-        // Select Project
+        // Select Project.
         const selectedProject = document.getElementById(proLiId);
         selectedProject.addEventListener('click', (e) => {
           setProjectId(proLiId);
@@ -59,7 +59,7 @@ const Project = (() => {
           domObj.markProject(selectedProject.classList.contains('not-selected'), selectedProject);
         }, false, {once : true});
   
-        // Delete Project
+        // Delete Project.
         const delProjectBtn = document.getElementById(proDelId);
         delProjectBtn.addEventListener('click', (e) =>{
           e.stopPropagation();
@@ -94,15 +94,16 @@ const Project = (() => {
         const todoEditBtn = document.getElementById(taskEditBtnId);
         const todoDoneBtn = document.getElementById(taskDoneBtnId);
 
-        // Delete Todo Listener.
+        // Delete Todo.
         todoDeleteBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
           todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
           domObj.clearTodos();
+          alert('Tasl Deleted!');
           scanTodos(getProjectId());
         }, false, {once : true});
 
-        // Edit Todo Listener.
+        // Edit Todo.
         todoEditBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
           domObj.showTodoForm();
@@ -113,7 +114,7 @@ const Project = (() => {
           todoObj.setEditTodoId(currentProject, projectIndex, currentProject['projectTodos'][elemtn].boxid)
         }, false, {once : true});
 
-        // Complete Todo Listener.
+        // Complete Todo.
         todoDoneBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
           todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
