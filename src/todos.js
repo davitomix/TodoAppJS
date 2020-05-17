@@ -7,7 +7,7 @@ const Todo = (() => {
   let taskBoxId = null;
   let taskDeleteBtnId = null;
   let editTodoProject = null;
-  let editTodoLabel = null;
+  let editTodoProjectIndx = null;
   let editTodoIndex = null;
 
   const createTodo = (projectId) => {
@@ -50,24 +50,24 @@ const Todo = (() => {
     storageObj.addToStorage('Todos-Obj', currentStorage);
   };
 
-  const setEditTodoId = (currentProject, label ,id) => {
-    const toDoIndex = currentProject.findIndex(obj => {
-      return obj.boxid == id;
+  const setEditTodoId = (currentProject, projectIndx , taskBoxId) => {
+    const toDoIndex = currentProject['projectTodos'].findIndex(obj => {
+      return obj.boxid == taskBoxId;
     });
     editTodoProject = currentProject;
-    editTodoLabel = label;
+    editTodoProjectIndx = projectIndx;
     editTodoIndex = toDoIndex;
   };
 
   const updateTodo = (newName, newDescription, newDeadline, newPriority) => {
-    editTodoProject[editTodoIndex].name = newName;
-    editTodoProject[editTodoIndex].description = newDescription;
-    editTodoProject[editTodoIndex].deadline = newDeadline;
-    editTodoProject[editTodoIndex].priority = newPriority;
+    editTodoProject['projectTodos'][editTodoIndex].name = newName;
+    editTodoProject['projectTodos'][editTodoIndex].description = newDescription;
+    editTodoProject['projectTodos'][editTodoIndex].deadline = newDeadline;
+    editTodoProject['projectTodos'][editTodoIndex].priority = newPriority;
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    currentStorage[editTodoLabel] = editTodoProject;
+    currentStorage[editTodoProjectIndx] = editTodoProject;
     storageObj.addToStorage('Todos-Obj', currentStorage);
-    projectObj.scanTodos(editTodoLabel);
+    projectObj.scanTodos(projectObj.getProjectId());
   };
 
   const setBoxId = (id) => {

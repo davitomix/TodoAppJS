@@ -76,28 +76,21 @@ const Project = (() => {
           scanTodos(getProjectId());
         }, false, {once : true});
         // Edit Todo Listener.
-        /*
-        if(!todoEditBtn.onclick) {
-          todoEditBtn.addEventListener('click', function deleteTodo(e) {
-            const todoObj = Todo;
-            domObj.showTodoForm();
-            domObj.showTodoSaveBtn();
-            domObj.fillTodoForm(taskName, taskDescription, taskDeadline, taskPriority);
-            todoObj.setEditTodoId(currentProject, label, currentProject[elemtn].boxid)
-          }, false, {once : true});
-        } else {
-          todoEditBtn.removeEventListener('click', deleteTodo);
-        }
-        if(!todoDoneBtn.onclick) {
-          todoDoneBtn.addEventListener('click', function deleteTodo(e) {
-            const todoObj = Todo;
-            todoObj.removeTodo(currentProject, label, taskBoxId);
-            alert('Task Completed !');
-          }, false, {once : true});
-        } else {
-          todoDoneBtn.removeEventListener('click', deleteTodo);
-        }
-        */
+        todoEditBtn.addEventListener('click', function deleteTodo(e) {
+          const todoObj = Todo;
+          domObj.showTodoForm();
+          domObj.showTodoSaveBtn();
+          domObj.fillTodoForm(taskName, taskDescription, taskDeadline, taskPriority);
+          todoObj.setEditTodoId(currentProject, projectIndex, currentProject['projectTodos'][elemtn].boxid)
+        }, false, {once : true});
+        // Complete Todo Listener.
+        todoDoneBtn.addEventListener('click', function deleteTodo(e) {
+          const todoObj = Todo;
+          todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
+          alert('Task Completed !');
+          domObj.clearTodos();
+          scanTodos(getProjectId());
+        }, false, {once : true});
       }
     }
   };
