@@ -31,6 +31,7 @@ const run = () => {
     domObj.hideTodoInitBox();
     domObj.showTextForm();
     domObj.clearTodos();
+    domObj.hideTodoForm();
   }, false, {once : true});
 
   // Show Create Todo Form.
