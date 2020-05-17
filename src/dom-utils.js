@@ -1,6 +1,6 @@
 const Dom = (() => {
-  let currentId = 0;
-  let btnId = 0;
+  let currentId = null;
+  let btnId = null;
   const todoForm = document.getElementById('display-form');
   const textForm = document.getElementById('display-text');
   const saveTodoBtn = document.getElementById('todo-save');

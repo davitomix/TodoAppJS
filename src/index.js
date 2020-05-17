@@ -35,7 +35,6 @@ const run = () => {
   todoForm.addEventListener('submit', function _func(e) {
     e.preventDefault();
     const projectId = projectObj.getProjectId();
-    console.log(projectId);
     todoObj.createTodo(projectId);
     projectObj.scanTodos(projectId);
     domObj.clearTodoForm();

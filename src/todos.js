@@ -2,10 +2,10 @@ import Storage from './storage-utils';
 import Project from './projects';
 
 const Todo = (() => {
-  let taskBoxId = 0;
-  let taskDeleteBtnId = 0;
   const projectObj = Project;
   const storageObj = Storage;
+  let taskBoxId = null;
+  let taskDeleteBtnId = null;
   let editTodoProject = null;
   let editTodoLabel = null;
   let editTodoIndex = null;
@@ -35,21 +35,19 @@ const Todo = (() => {
     const projectIndex = currentStorage.findIndex(obj => {
       return obj.projectLiId == projectId;
     });
-    console.log(projectIndex)
     currentStorage[projectIndex].projectTodos.push(newTask);
     storageObj.addToStorage('Todos-Obj', currentStorage);
     console.log(currentStorage);
   };
 
-  const removeTodo = (currentProject, label, taskBoxId) => {
+  const removeTodo = (currentProject, projectIndex, taskBoxId) => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    const toDoIndex = currentProject.findIndex(obj => {
+    const toDoIndex = currentProject['projectTodos'].findIndex(obj => {
       return obj.boxid == taskBoxId;
     });
-    currentProject.splice(toDoIndex, 1);
-    currentStorage[label] = currentProject;
+    currentProject['projectTodos'].splice(toDoIndex, 1);
+    currentStorage[projectIndex]['projectTodos']= currentProject['projectTodos'];
     storageObj.addToStorage('Todos-Obj', currentStorage);
-    projectObj.scanTodos(label);
   };
 
   const setEditTodoId = (currentProject, label ,id) => {
