@@ -24,25 +24,51 @@ const Project = (() => {
     storageObj.addToStorage('Todos-Obj', todoMain);
   };
 
+  const deleteProject = (delProjectBtn) => {
+    const currentStorage = JSON.parse(localStorage['Todos-Obj']);
+    const projectId = delProjectBtn.parentElement.id;
+    console.log(currentStorage);
+    const projectIndex = currentStorage.findIndex(obj => {
+      return obj.projectLiId == projectId;
+    });
+    currentStorage.splice(projectIndex, 1);
+    storageObj.addToStorage('Todos-Obj', currentStorage);
+    console.log(currentStorage);
+    domObj.removeProject(projectId);
+    domObj.clearTodos();
+    domObj.clearProjects();
+    scanProjects();
+  };
+
   const scanProjects = () => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    for(const ele in currentStorage){
-      const proName = currentStorage[ele].projectName;
-      const proLiId = currentStorage[ele].projectLiId;
-      const proDelId = currentStorage[ele].projectDeleteBtnId;
-      domObj.injectProject(proName, proLiId, proDelId);
-      
-      // Select Project
-      const selectedProject = document.getElementById(proLiId);
-      selectedProject.addEventListener('click', (e) => {
-        setProjectId(proLiId);
-        domObj.clearTodoForm();
-        domObj.hideTodoSaveBtn();
-        scanTodos(proLiId);
-        domObj.showTodoForm();
-        domObj.unmarkProjects();
-        domObj.markProject(selectedProject.classList.contains('not-selected'), selectedProject);
-      }, false, {once : true})
+    if(currentStorage.length > 0) {
+      for(const ele in currentStorage){
+        const proName = currentStorage[ele].projectName;
+        const proLiId = currentStorage[ele].projectLiId;
+        const proDelId = currentStorage[ele].projectDeleteBtnId;
+        domObj.injectProject(proName, proLiId, proDelId);
+        
+        // Select Project
+        const selectedProject = document.getElementById(proLiId);
+        selectedProject.addEventListener('click', (e) => {
+          setProjectId(proLiId);
+          domObj.clearTodoForm();
+          domObj.hideTodoSaveBtn();
+          scanTodos(proLiId);
+          domObj.showTodoForm();
+          domObj.unmarkProjects();
+          domObj.markProject(selectedProject.classList.contains('not-selected'), selectedProject);
+        }, false, {once : true});
+  
+        // Delete Project
+        const delProjectBtn = document.getElementById(proDelId);
+        delProjectBtn.addEventListener('click', (e) =>{
+          e.stopPropagation();
+          domObj.hideTodoForm();
+          deleteProject(delProjectBtn);
+        }, false, {once : true});
+      }
     }
   }
 
