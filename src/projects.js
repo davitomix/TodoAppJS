@@ -99,8 +99,8 @@ const Project = (() => {
           const todoObj = Todo;
           todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
           domObj.clearTodos();
-          alert('Tasl Deleted!');
           scanTodos(getProjectId());
+          alert('Tasl Deleted!');
         }, false, {once : true});
 
         // Edit Todo.
@@ -118,9 +118,9 @@ const Project = (() => {
         todoDoneBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
           todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
-          alert('Task Completed !');
           domObj.clearTodos();
           scanTodos(getProjectId());
+          alert('Task Completed !');
         }, false, {once : true});
       }
     }
