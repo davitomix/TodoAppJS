@@ -21,13 +21,16 @@ const todoEdit = document.getElementById('todo-save');
 const initTodoBtn = document.getElementById('todo-init');
 
 const run = () => {
-  
+
   // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
     projectObj.createProject();
     domObj.clearProjects();
     projectObj.scanProjects();
+    domObj.hideTodoInitBox();
+    domObj.showTextForm();
+    domObj.clearTodos();
   }, false, {once : true});
 
   // Show Create Todo Form.
@@ -47,8 +50,8 @@ const run = () => {
     projectObj.scanTodos(projectId);
     domObj.clearTodoForm();
     domObj.hideTodoForm();
-    domObj.showTextForm();
-    domObj.unmarkProjects();
+    domObj.hideTextForm();
+    domObj.showTodoInitBox();
   }, false, {once : true});
 
   // Cancel Todo.
