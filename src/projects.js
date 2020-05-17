@@ -56,6 +56,7 @@ const Project = (() => {
           scanTodos(proLiId);
           domObj.hideTextForm();
           domObj.unmarkProjects();
+          domObj.hideTodoForm();
           domObj.markProject(selectedProject.classList.contains('not-selected'), selectedProject);
         }, false, {once : true});
   
@@ -99,6 +100,8 @@ const Project = (() => {
           const todoObj = Todo;
           todoObj.removeTodo(currentProject, projectIndex, taskBoxId);
           domObj.clearTodos();
+          domObj.hideTodoForm();
+          domObj.showTodoInitBox();
           scanTodos(getProjectId());
           alert('Tasl Deleted!');
         }, false, {once : true});
