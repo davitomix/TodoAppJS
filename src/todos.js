@@ -37,7 +37,6 @@ const Todo = (() => {
     });
     currentStorage[projectIndex].projectTodos.push(newTask);
     storageObj.addToStorage('Todos-Obj', currentStorage);
-    console.log(currentStorage);
   };
 
   const removeTodo = (currentProject, projectIndex, taskBoxId) => {

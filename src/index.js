@@ -18,18 +18,25 @@ const projectForm = document.getElementById('project-form');
 const todoForm = document.getElementById('todo-form');
 const todoCancel = document.getElementById('todo-cancel');
 const todoEdit = document.getElementById('todo-save');
+const initTodoBtn = document.getElementById('todo-init');
 
 const run = () => {
-  console.log('running...');
-
   // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
     projectObj.createProject();
     domObj.clearProjects();
     projectObj.scanProjects();
-    console.log(JSON.parse(localStorage['Todos-Obj']));
-  });
+  }, false, {once : true});
+
+  // Show Create Todo Form.
+  initTodoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    domObj.showTodoForm();
+    domObj.hideTodoSaveBtn();
+    domObj.hideTodoInitBox();
+  }, false, {once : true});
+
 
   // Create Todo.
   todoForm.addEventListener('submit', function _func(e) {
@@ -39,6 +46,7 @@ const run = () => {
     projectObj.scanTodos(projectId);
     domObj.clearTodoForm();
     domObj.hideTodoForm();
+    domObj.showTextForm();
     domObj.unmarkProjects();
   }, false, {once : true});
 
@@ -46,40 +54,46 @@ const run = () => {
   todoCancel.addEventListener('click', (e) => {
     domObj.clearTodoForm();
     domObj.hideTodoForm();
-    domObj.unmarkProjects();
     domObj.hideTodoSaveBtn();
+    domObj.showTodoInitBox();
+    domObj.hideTodoForm();
   }, false, {once : true});
 
   // Edit Todo.
   todoEdit.addEventListener('click', (e) => {
-    console.log('saved todo');
     const newName = document.getElementById('task-name').value;
     const newDescription = document.getElementById('task-description').value;
     const newDeadline = document.getElementById('task-deadline').value;
     const newPriority = document.getElementById('task-priority').value;
     todoObj.updateTodo(newName, newDescription, newDeadline, newPriority);
     domObj.hideTodoForm();
+    domObj.showTextForm();
     domObj.hideTodoSaveBtn();
     domObj.clearTodoForm();
+    alert('Task Saved!');
   }, false, {once : true})
 };
 
 const start = (() => {
   const result = storageObj.todoObjExists();
-  const todoMain = new Array;
-  storageObj.removeFromStorage('Todos-Obj');
-  storageObj.addToStorage('Todos-Obj', todoMain);
-  // if(!result){
-  //   const TodoMain = {};
-  //   //TodoMain['default'] = [];
-  //   storageObj.addToStorage('Todos-Obj', TodoMain);
-  // }
-  // else {
-  //   const actualStorage = JSON.parse(localStorage['Todos-Obj']);
-  //   const storageKeys = Object.keys(actualStorage);
-  //   for(const prjct in storageKeys) {
-  //     domObj.injectProject(storageKeys[prjct]);
-  //   }
-  // }
+  if(!result){
+    const todoMain = new Array;
+    let idGenerator = new Date();
+    idGenerator = idGenerator.getTime();
+    const newProject = {
+      projectName: 'default',
+      projectLiId: idGenerator,
+      projectDeleteBtnId: idGenerator + 1,
+      projectTodos: []
+    };
+    projectObj.setProjectId(newProject['projectLiId']);
+    todoMain.push(newProject);
+    storageObj.addToStorage('Todos-Obj', todoMain);
+    projectObj.scanProjects();
+  }
+  else {
+    projectObj.scanProjects();
+  }
+  domObj.hideTodoInitBox();
   run();
 })();

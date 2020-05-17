@@ -27,13 +27,11 @@ const Project = (() => {
   const deleteProject = (delProjectBtn) => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
     const projectId = delProjectBtn.parentElement.id;
-    console.log(currentStorage);
     const projectIndex = currentStorage.findIndex(obj => {
       return obj.projectLiId == projectId;
     });
     currentStorage.splice(projectIndex, 1);
     storageObj.addToStorage('Todos-Obj', currentStorage);
-    console.log(currentStorage);
     domObj.removeProject(projectId);
     domObj.clearTodos();
     domObj.clearProjects();
@@ -54,9 +52,9 @@ const Project = (() => {
         selectedProject.addEventListener('click', (e) => {
           setProjectId(proLiId);
           domObj.clearTodoForm();
-          domObj.hideTodoSaveBtn();
+          domObj.showTodoInitBox();
           scanTodos(proLiId);
-          domObj.showTodoForm();
+          domObj.hideTextForm();
           domObj.unmarkProjects();
           domObj.markProject(selectedProject.classList.contains('not-selected'), selectedProject);
         }, false, {once : true});
@@ -66,6 +64,8 @@ const Project = (() => {
         delProjectBtn.addEventListener('click', (e) =>{
           e.stopPropagation();
           domObj.hideTodoForm();
+          domObj.hideTodoInitBox();
+          domObj.showTextForm();
           deleteProject(delProjectBtn);
         }, false, {once : true});
       }
@@ -78,7 +78,6 @@ const Project = (() => {
       return obj.projectLiId == projectId;
     });
     const currentProject = currentStorage[projectIndex];
-    console.log(currentProject.projectTodos);
     domObj.clearTodos();
     if(currentProject['projectTodos'].length > 0){
       for(const elemtn in currentProject.projectTodos) {
@@ -94,6 +93,7 @@ const Project = (() => {
         const todoDeleteBtn = document.getElementById(taskDeleteBtnId);
         const todoEditBtn = document.getElementById(taskEditBtnId);
         const todoDoneBtn = document.getElementById(taskDoneBtnId);
+
         // Delete Todo Listener.
         todoDeleteBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
@@ -101,14 +101,18 @@ const Project = (() => {
           domObj.clearTodos();
           scanTodos(getProjectId());
         }, false, {once : true});
+
         // Edit Todo Listener.
         todoEditBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;
           domObj.showTodoForm();
           domObj.showTodoSaveBtn();
+          domObj.hideTextForm();
+          domObj.hideTodoInitBox();
           domObj.fillTodoForm(taskName, taskDescription, taskDeadline, taskPriority);
           todoObj.setEditTodoId(currentProject, projectIndex, currentProject['projectTodos'][elemtn].boxid)
         }, false, {once : true});
+
         // Complete Todo Listener.
         todoDoneBtn.addEventListener('click', function deleteTodo(e) {
           const todoObj = Todo;

@@ -5,6 +5,7 @@ const Dom = (() => {
   const textForm = document.getElementById('display-text');
   const saveTodoBtn = document.getElementById('todo-save');
   const createTodoBtn = document.getElementById('todo-create');
+  const initTodoBox= document.getElementById('display-init-todo');
 
   const setProjectId = (id) => {
     currentId = id;
@@ -143,17 +144,23 @@ const Dom = (() => {
   };
 
   const hideTodoForm = () => {
-      textForm.classList.add('util-cont');
-      textForm.classList.remove('d-none');
-      todoForm.classList.remove('util-cont');
-      todoForm.classList.add('d-none');
+    todoForm.classList.remove('util-cont');
+    todoForm.classList.add('d-none');
   };
 
   const showTodoForm = () => {
-      textForm.classList.remove('util-cont');
-      todoForm.classList.remove('d-none');
-      todoForm.classList.add('util-cont');
-      textForm.classList.add('d-none');
+    todoForm.classList.remove('d-none');
+    todoForm.classList.add('util-cont');
+  };
+
+  const hideTextForm = () => {
+    textForm.classList.remove('util-cont');
+    textForm.classList.add('d-none');
+  };
+
+  const showTextForm = () => {
+    textForm.classList.add('util-cont');
+    textForm.classList.remove('d-none');
   };
 
   const unmarkProjects = () => {
@@ -192,6 +199,14 @@ const Dom = (() => {
     }
   };
 
+  const showTodoInitBox = () => {
+    initTodoBox.classList.remove('d-none');
+  };
+
+  const hideTodoInitBox = () => {
+    initTodoBox.classList.add('d-none');
+  };
+
   return {
     getProjectId,
     getButtonId,
@@ -205,10 +220,14 @@ const Dom = (() => {
     hideTodoSaveBtn,
     hideTodoForm,
     showTodoForm,
+    hideTextForm,
+    showTextForm,
     unmarkProjects,
     markProject,
     clearTodos,
-    clearProjects
+    clearProjects,
+    showTodoInitBox,
+    hideTodoInitBox
   };
 })();
 
