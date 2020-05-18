@@ -53,24 +53,26 @@
       <div class="col-sm-5 todo-create-form d-none" id="display-form">
         <form action="#" name="todoform" id="todo-form">
           <label>
-            Task name
+            <div>Task name</div>            
             <input type="text" id="task-name" maxlength="25" required>
           </label>
+          <br>
           <label>
-            Description
+            <div>Description</div>
             <textarea name="Description" rows="3" cols="40" id="task-description" required></textarea>
           </label>
+          <br>
           <label>
-            Deadline
-            <input type="date" id="task-deadline" required>
-          </label>
-          <label>
-            Priority
+            <div>Priority</div>
             <select id="task-priority">
               <option value="high">High</option>
               <option value="medium">Medium</option>
               <option  selected='selected' value="low">Low</option>
             </select>
+          </label>
+          <label>
+            <div>Deadline</div>
+            <input type="date" id="task-deadline" required>
           </label>
           <button type="submit" name="create" id="todo-create">Create Task</button>
           <button type="button" name="save" id="todo-save" class="d-none">Save</button>
