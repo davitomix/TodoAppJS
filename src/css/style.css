@@ -119,3 +119,7 @@ h3 {
   padding: 2.5px 0;
   font-size: 18px;
 }
+
+#display-form{
+  align-items: left;
+}
