@@ -1,4 +1,5 @@
 import Storage from './storage-utils';
+/* eslint-disable */
 import Project from './projects';
 
 const Todo = (() => {
@@ -15,6 +16,7 @@ const Todo = (() => {
     idGenerator = idGenerator.getTime();
     const taskBoxId = idGenerator;
     const taskDeleteBtnId = idGenerator + 1;
+    /* eslint-enable */
     const taskEditBtnId = idGenerator + 2;
     const taskDoneBtnId = idGenerator + 3;
     const taskName = document.getElementById('task-name').value;
@@ -32,64 +34,43 @@ const Todo = (() => {
       priority: taskPriority,
     };
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    const projectIndex = currentStorage.findIndex(obj => {
-      return obj.projectLiId == projectId;
-    });
+    const projectIndex = currentStorage.findIndex((obj) => obj.projectLiId === projectId);
     currentStorage[projectIndex].projectTodos.push(newTask);
     storageObj.addToStorage('Todos-Obj', currentStorage);
   };
-
+  /* eslint-disable */
   const removeTodo = (currentProject, projectIndex, taskBoxId) => {
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
-    const toDoIndex = currentProject['projectTodos'].findIndex(obj => {
-      return obj.boxid == taskBoxId;
-    });
-    currentProject['projectTodos'].splice(toDoIndex, 1);
-    currentStorage[projectIndex]['projectTodos']= currentProject['projectTodos'];
+    const toDoIndex = currentProject.projectTodos.findIndex((obj) => obj.boxid === taskBoxId);
+    currentProject.projectTodos.splice(toDoIndex, 1);
+    currentStorage[projectIndex].projectTodos = currentProject.projectTodos;
     storageObj.addToStorage('Todos-Obj', currentStorage);
   };
 
-  const setEditTodoId = (currentProject, projectIndx , taskBoxId) => {
-    const toDoIndex = currentProject['projectTodos'].findIndex(obj => {
-      return obj.boxid == taskBoxId;
-    });
+  const setEditTodoId = (currentProject, projectIndx, taskBoxId) => {
+    const toDoIndex = currentProject.projectTodos.findIndex((obj) => obj.boxid === taskBoxId);
     editTodoProject = currentProject;
     editTodoProjectIndx = projectIndx;
     editTodoIndex = toDoIndex;
   };
-
+  /* eslint-enable */
   const updateTodo = (newName, newDescription, newDeadline, newPriority) => {
-    editTodoProject['projectTodos'][editTodoIndex].name = newName;
-    editTodoProject['projectTodos'][editTodoIndex].description = newDescription;
-    editTodoProject['projectTodos'][editTodoIndex].deadline = newDeadline;
-    editTodoProject['projectTodos'][editTodoIndex].priority = newPriority;
+    editTodoProject.projectTodos[editTodoIndex].name = newName;
+    editTodoProject.projectTodos[editTodoIndex].description = newDescription;
+    editTodoProject.projectTodos[editTodoIndex].deadline = newDeadline;
+    editTodoProject.projectTodos[editTodoIndex].priority = newPriority;
     const currentStorage = JSON.parse(localStorage['Todos-Obj']);
     currentStorage[editTodoProjectIndx] = editTodoProject;
     storageObj.addToStorage('Todos-Obj', currentStorage);
     projectObj.scanTodos(projectObj.getProjectId());
   };
 
-  const setBoxId = (id) => {
-    taskBoxId = id;
-  };
-
-  const getBoxId = () => {
-    return taskBoxId;
-  };
-
-  const setDeleteBtnId = (id) => {
-    taskDeleteBtnId = id;
-  };
-
-  const getDeleteBtnId = () => {
-    return taskDeleteBtnId;
-  };
 
   return {
     createTodo,
     removeTodo,
     setEditTodoId,
-    updateTodo
+    updateTodo,
   };
 })();
 

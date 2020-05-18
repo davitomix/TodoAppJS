@@ -5,23 +5,19 @@ const Dom = (() => {
   const textForm = document.getElementById('display-text');
   const saveTodoBtn = document.getElementById('todo-save');
   const createTodoBtn = document.getElementById('todo-create');
-  const initTodoBox= document.getElementById('display-init-todo');
+  const initTodoBox = document.getElementById('display-init-todo');
 
   const setProjectId = (id) => {
     currentId = id;
   };
 
-  const getProjectId = () => {
-    return currentId;
-  };
+  const getProjectId = () => currentId;
 
   const setButtonId = (id) => {
     btnId = id;
   };
 
-  const getButtonId = () => {
-    return btnId;
-  };
+  const getButtonId = () => btnId;
 
   const injectProject = (proName, proLiId, proDelId) => {
     const projectUl = document.getElementById('project-ul');
@@ -81,13 +77,13 @@ const Dom = (() => {
     thDesc.innerText = 'Description';
     thDead.innerText = 'Deadline';
     thPrior.innerText = 'Priority';
-    
+
     tdName.innerHTML = name;
     tdDesc.innerHTML = description;
     tdDead.innerHTML = deadline;
     tdPrior.innerHTML = priority;
     editBtn.innerHTML = 'edit';
-    editBtn.className = 'edit-todo-btn'
+    editBtn.className = 'edit-todo-btn';
     deleteBtn.innerHTML = 'delete';
     deleteBtn.className = 'delete-todo-btn';
     doneBtn.innerHTML = 'complete';
@@ -116,9 +112,9 @@ const Dom = (() => {
   };
 
   const clearInput = (field) => {
-    document.getElementById(field).value = "";
+    document.getElementById(field).value = '';
   };
-
+/* eslint-disable */
   const fillTodoForm = (taskName, taskDescription, taskDeadline, taskPriority) => {
     const todoName = document.getElementById('task-name').value = taskName;
     const todoDescription = document.getElementById('task-description').value = taskDescription;
@@ -132,7 +128,7 @@ const Dom = (() => {
     const taskDeadline = document.getElementById('task-deadline').value = null;
     const taskPriority = document.getElementById('task-priority').value = 'low';
   };
-
+  /* eslint-enable */
   const showTodoSaveBtn = () => {
     saveTodoBtn.classList.remove('d-none');
     createTodoBtn.classList.add('d-none');
@@ -166,8 +162,8 @@ const Dom = (() => {
   const unmarkProjects = () => {
     const projectsList = document.getElementById('project-ul');
     const items = projectsList.getElementsByTagName('li');
-    for(let i=0; i< items.length; i++){
-      if(items[i].classList.contains('selected')){
+    for (let i = 0; i < items.length; i += 1) {
+      if (items[i].classList.contains('selected')) {
         items[i].classList.remove('selected');
         items[i].classList.add('not-selected');
       }
@@ -175,11 +171,10 @@ const Dom = (() => {
   };
 
   const markProject = (value, project) => {
-    if(value){
+    if (value) {
       project.classList.remove('not-selected');
       project.classList.add('selected');
-    }
-    else{
+    } else {
       project.classList.remove('selected');
       project.classList.add('not-selected');
     }
@@ -187,14 +182,14 @@ const Dom = (() => {
 
   const clearTodos = () => {
     const todoContainer = document.getElementById('todo-container');
-    while(todoContainer.hasChildNodes()) {
+    while (todoContainer.hasChildNodes()) {
       todoContainer.removeChild(todoContainer.firstChild);
     }
   };
 
   const clearProjects = () => {
     const projectsContainer = document.getElementById('project-ul');
-    while(projectsContainer.hasChildNodes()) {
+    while (projectsContainer.hasChildNodes()) {
       projectsContainer.removeChild(projectsContainer.firstChild);
     }
   };
@@ -227,7 +222,7 @@ const Dom = (() => {
     clearTodos,
     clearProjects,
     showTodoInitBox,
-    hideTodoInitBox
+    hideTodoInitBox,
   };
 })();
 

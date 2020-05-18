@@ -6,12 +6,12 @@ import Project from './projects';
 import Storage from './storage-utils';
 import Dom from './dom-utils';
 
-//DOM.
+// DOM.
 const domObj = Dom;
 const todoObj = Todo;
 // Storage.
 const storageObj = Storage;
-// Projects. 
+// Projects.
 const projectObj = Project;
 const projectForm = document.getElementById('project-form');
 // Todos.
@@ -21,7 +21,6 @@ const todoEdit = document.getElementById('todo-save');
 const initTodoBtn = document.getElementById('todo-init');
 
 const run = () => {
-
   // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ const run = () => {
     domObj.showTextForm();
     domObj.clearTodos();
     domObj.hideTodoForm();
-  }, false, {once : true});
+  }, false, { once: true });
 
   // Show Create Todo Form.
   initTodoBtn.addEventListener('click', (e) => {
@@ -40,11 +39,11 @@ const run = () => {
     domObj.showTodoForm();
     domObj.hideTodoSaveBtn();
     domObj.hideTodoInitBox();
-  }, false, {once : true});
+  }, false, { once: true });
 
 
   // Create Todo.
-  todoForm.addEventListener('submit', function _func(e) {
+  todoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const projectId = projectObj.getProjectId();
     todoObj.createTodo(projectId);
@@ -53,19 +52,19 @@ const run = () => {
     domObj.hideTodoForm();
     domObj.hideTextForm();
     domObj.showTodoInitBox();
-  }, false, {once : true});
+  }, false, { once: true });
 
   // Cancel Todo.
-  todoCancel.addEventListener('click', (e) => {
+  todoCancel.addEventListener('click', () => {
     domObj.clearTodoForm();
     domObj.hideTodoForm();
     domObj.hideTodoSaveBtn();
     domObj.showTodoInitBox();
     domObj.hideTodoForm();
-  }, false, {once : true});
+  }, false, { once: true });
 
   // Edit Todo.
-  todoEdit.addEventListener('click', (e) => {
+  todoEdit.addEventListener('click', () => {
     const newName = document.getElementById('task-name').value;
     const newDescription = document.getElementById('task-description').value;
     const newDeadline = document.getElementById('task-deadline').value;
@@ -75,28 +74,30 @@ const run = () => {
     domObj.showTextForm();
     domObj.hideTodoSaveBtn();
     domObj.clearTodoForm();
+    /* eslint-disable */
     alert('Task Saved!');
-  }, false, {once : true})
+    /* eslint-enable */
+  }, false, { once: true });
 };
-
+/* eslint-disable */
 const start = (() => {
   const result = storageObj.todoObjExists();
-  if(!result){
-    const todoMain = new Array;
+  if (!result) {
+    const todoMain = new Array();
+    /* eslint-enable */
     let idGenerator = new Date();
     idGenerator = idGenerator.getTime();
     const newProject = {
       projectName: 'default',
       projectLiId: idGenerator,
       projectDeleteBtnId: idGenerator + 1,
-      projectTodos: []
+      projectTodos: [],
     };
-    projectObj.setProjectId(newProject['projectLiId']);
+    projectObj.setProjectId(newProject.projectLiId);
     todoMain.push(newProject);
     storageObj.addToStorage('Todos-Obj', todoMain);
     projectObj.scanProjects();
-  }
-  else {
+  } else {
     projectObj.scanProjects();
   }
   domObj.hideTodoInitBox();

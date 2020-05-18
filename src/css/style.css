@@ -7,6 +7,11 @@ html {
   box-sizing: inherit;
 }
 
+
+body{
+  font-family: 'Pacifico', cursive;
+}
+
 #title {
   background-color: thistle;
   text-align: center;
@@ -64,8 +69,12 @@ html {
   margin-left: 5%;
 }
 
+.lists{
+  height: 250px;
+}
+
 .pjct-list {
-  max-height: 300px;
+  max-height: 600px;
   overflow: hidden;
   overflow-y: scroll;
   display: flex;
