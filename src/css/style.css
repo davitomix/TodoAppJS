@@ -9,7 +9,8 @@ html {
 
 
 body{
-  font-family: 'Pacifico', cursive;
+  font-family: 'Indie Flower', cursive;
+  font-size: 52;
 }
 
 #title {
@@ -117,7 +118,7 @@ body{
 
 h3 {
   padding: 2.5px 0;
-  font-size: 18px;
+  font-size: 28px;
 }
 
 #display-form{
