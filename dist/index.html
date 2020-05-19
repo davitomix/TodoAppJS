@@ -3,10 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
-  Hola Mundo.
+
+  <div id="title">
+    <h1>Todo-Fy</h1>
+  </div>
+
+  <div class="container-fluid big-cont">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div id="project-container" class="col-lg-3 util-cont">
+        <h2>Projects</h2> 
+        <ul id="project-ul" class="pjct-list">
+        </ul>
+      </div>
+      <div class="col-lg-5 util-cont lists">
+        <h2>Tasks</h2> 
+        <div id="todo-container">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid big-cont">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3 util-cont">
+        <form action="#" name="projectform" id="project-form">
+          <label for="project-edit-name">
+            Project name<br>
+            <input type="text" id="project-name" required><br>
+          </label>
+          <button type="submit" name="project-create" class="submit" id="project-create">Create New Project</button>
+        </form>
+      </div>
+
+      <div class="col-lg-5 util-cont" id="display-text">
+        <h3>Select a project to create a To-do</h3>
+      </div>
+
+      <div class="col-lg-5 util-cont" id="display-init-todo">
+        <button type="button" name="todo" id="todo-init">Create a Todo</button>
+      </div>
+
+      <div class="col-sm-5 todo-create-form d-none" id="display-form">
+        <form action="#" name="todoform" id="todo-form">
+          <label>
+            <div>Task name</div>            
+            <input type="text" id="task-name" maxlength="25" required>
+          </label>
+          <br>
+          <label>
+            <div>Description</div>
+            <textarea name="Description" rows="3" cols="40" id="task-description" required></textarea>
+          </label>
+          <br>
+          <label>
+            <div>Priority</div>
+            <select id="task-priority">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option  selected='selected' value="low">Low</option>
+            </select>
+          </label>
+          <label>
+            <div>Deadline</div>
+            <input type="date" id="task-deadline" required>
+          </label>
+          <button type="submit" name="create" id="todo-create">Create Task</button>
+          <button type="button" name="save" id="todo-save" class="d-none">Save</button>
+          <button type="button" name="cancel" id="todo-cancel">Cancel</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
   <script src="main.js"></script>
 </body>
 </html>

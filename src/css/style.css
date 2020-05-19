@@ -1,0 +1,126 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+body{
+  font-family: 'Indie Flower', cursive;
+  font-size: 52;
+}
+
+#title {
+  background-color: thistle;
+  text-align: center;
+}
+
+#title h1 {
+  padding: .5em 0;
+  margin: 0;
+}
+
+.big-cont {
+  padding: 5vh 0 5vh 0;
+  background-color: rgb(179, 216, 245);
+}
+
+.todo-task {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: thistle;
+  margin: .25em;
+  width: 100%;
+}
+
+.todo-task tr th,
+.todo-task tr td {
+  padding: 0 5px;
+}
+
+.done-todo-btn,
+.edit-todo-btn,
+.delete-todo-btn {
+  color: white;
+  text-align: center;
+}
+
+.edit-todo-btn {
+  background-color: rgb(169, 169, 51);
+}
+
+.delete-todo-btn {
+  background-color: tomato;
+}
+
+.done-todo-btn {
+  background-color: rgb(30, 67, 187);
+}
+
+.util-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-left: 5%;
+}
+
+.lists{
+  height: 250px;
+}
+
+.pjct-list {
+  max-height: 600px;
+  overflow: hidden;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.project-li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.project-li:hover {
+  cursor: pointer;
+}
+
+.project-li button{
+  position: absolute;
+  right: 35px;
+}
+
+.selected {
+  background-color: rgb(176, 151, 176);
+}
+
+.not-selected {		
+  background-color: thistle;		
+}
+
+h3 {
+  padding: 2.5px 0;
+  font-size: 28px;
+}
+
+#display-form{
+  align-items: left;
+}
