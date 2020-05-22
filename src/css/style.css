@@ -14,7 +14,7 @@ body{
 }
 
 #title {
-  background-color: thistle;
+  background-color: rgb(120, 164, 109);
   text-align: center;
 }
 
@@ -25,13 +25,13 @@ body{
 
 .big-cont {
   padding: 5vh 0 5vh 0;
-  background-color: rgb(179, 216, 245);
+  background-color: rgb(117, 159, 191);
 }
 
 .todo-task {
   border: 2px solid black;
   border-radius: 5px;
-  background-color: thistle;
+  background-color: rgb(120, 164, 109);
   margin: .25em;
   width: 100%;
 }
@@ -109,11 +109,11 @@ body{
 }
 
 .selected {
-  background-color: rgb(176, 151, 176);
+  background-color: rgb(98, 167, 81);	
 }
 
 .not-selected {		
-  background-color: thistle;		
+  background-color: rgb(120, 164, 109);		
 }
 
 h3 {
