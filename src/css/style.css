@@ -101,9 +101,13 @@ body{
   text-align: center;
 }
 
-.project-cont form label,
-.project-cont form label input{
+.project-cont form label{
   font-size: 22px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.project-cont form label input {
   width: 80%;
   margin-bottom: 10px;
 }
@@ -139,6 +143,17 @@ body{
 
 .d-none {
   display: none;
+}
+
+#todo-create,
+#todo-save,
+#todo-cancel,
+#todo-init,
+#project-create {
+  padding: 8.5px 5.5px;
+  border-radius: 5px;
+  background-color: rgb(120, 164, 109);
+  cursor: pointer;
 }
 
 @media (max-width: 850px) {
