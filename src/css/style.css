@@ -124,3 +124,7 @@ h3 {
 #display-form{
   align-items: left;
 }
+
+.d-none {
+  display: none;
+}
