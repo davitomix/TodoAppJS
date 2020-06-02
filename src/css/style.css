@@ -10,7 +10,9 @@ html {
 
 body{
   font-family: 'Indie Flower', cursive;
-  font-size: 52;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
 }
 
 #title {
@@ -24,16 +26,70 @@ body{
 }
 
 .big-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
   padding: 5vh 0 5vh 0;
   background-color: rgb(117, 159, 191);
+}
+
+.project-cont {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.task-cont {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pjct-ul {
+  padding: 0;
+  margin: 0;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.project-li {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-li h3 {
+  width: 60%;
+}
+
+.project-li:hover {
+  cursor: pointer;
+}
+
+.todo-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .todo-task {
   border: 2px solid black;
   border-radius: 5px;
   background-color: rgb(120, 164, 109);
-  margin: .25em;
-  width: 100%;
+  margin: 10px 0;
+  padding: 0;
+  min-width: 90%;
 }
 
 .todo-task tr th,
@@ -47,65 +103,14 @@ body{
   color: white;
   text-align: center;
 }
-
 .edit-todo-btn {
   background-color: rgb(169, 169, 51);
 }
-
 .delete-todo-btn {
   background-color: tomato;
 }
-
 .done-todo-btn {
   background-color: rgb(30, 67, 187);
-}
-
-.util-cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-left: 5%;
-}
-
-.lists{
-  height: 250px;
-}
-
-.pjct-list {
-  max-height: 600px;
-  overflow: hidden;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  list-style-type: none;
-  padding: 0;
-  width: 100%;
-}
-
-.project-li {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 100%;
-  padding: 5px 0;
-  margin: 5px 0;
-}
-
-.project-li:hover {
-  cursor: pointer;
-}
-
-.project-li button{
-  position: absolute;
-  right: 35px;
 }
 
 .selected {
@@ -116,15 +121,8 @@ body{
   background-color: rgb(120, 164, 109);		
 }
 
-h3 {
-  padding: 2.5px 0;
-  font-size: 28px;
-}
-
-#display-form{
-  align-items: left;
-}
-
 .d-none {
   display: none;
 }
+
+@media
