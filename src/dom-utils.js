@@ -6,7 +6,8 @@ const Dom = (() => {
   const saveTodoBtn = document.getElementById('todo-save');
   const createTodoBtn = document.getElementById('todo-create');
   const initTodoBox = document.getElementById('display-init-todo');
-
+  const projectForm = document.getElementById('project-form');
+  const initProjectBox = document.getElementById('project-init');
   const setProjectId = (id) => {
     currentId = id;
   };
@@ -202,6 +203,23 @@ const Dom = (() => {
     initTodoBox.classList.add('d-none');
   };
 
+  const hideProjectInitBox = () => {
+    initProjectBox.parentElement.classList.add('d-none');
+  };
+
+  const showProjectInitBox = () => {
+    initProjectBox.parentElement.classList.remove('d-none');
+  };
+
+  const hideProjectForm = () => {
+    projectForm.parentElement.classList.add('d-none');
+  };
+
+  const showProjectForm = () => {
+    projectForm.parentElement.classList.remove('d-none');
+    projectForm.classList.add('show-form');
+  };
+
   return {
     getProjectId,
     getButtonId,
@@ -223,6 +241,10 @@ const Dom = (() => {
     clearProjects,
     showTodoInitBox,
     hideTodoInitBox,
+    hideProjectInitBox,
+    showProjectInitBox,
+    hideProjectForm,
+    showProjectForm,
   };
 })();
 
