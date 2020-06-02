@@ -1,8 +1,11 @@
 # Todo List App.
 
-> This project consist on build a webpage where a user can put all their tasks of the day.
+> This project consist on a simple web app where a user can introduce projects and todos for each project. This webpage make use of the local storage so tasks and projects are kept even if the browser is closed.
 
-![screenshot](./main_readme.png)
+![screenshot](./todoappmain.gif)
+
+<img align="left" src="./mobile.png">
+<img align="right" src="./desktop.png">
 
 ## Built With
 
