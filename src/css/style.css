@@ -51,6 +51,10 @@ body{
   flex-direction: column;
 }
 
+.task-cont h3 {
+  font-size: 22px;
+}
+
 .pjct-ul {
   padding: 0;
   margin: 0;
@@ -92,6 +96,18 @@ body{
   min-width: 90%;
 }
 
+.project-cont form {
+  width: 80%;
+  text-align: center;
+}
+
+.project-cont form label,
+.project-cont form label input{
+  font-size: 22px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
 .todo-task tr th,
 .todo-task tr td {
   padding: 0 5px;
@@ -125,4 +141,22 @@ body{
   display: none;
 }
 
-@media
+@media (max-width: 850px) {
+  .big-cont {
+    flex-direction: column;
+  }
+
+  .todo-task,
+  .task-cont,
+  .project-cont {
+    width: 100%;
+  }
+
+  .todo-cont {
+    width: 80%;
+  }
+
+  #display-init-todo {
+    margin: 20px 0;
+  }
+}
