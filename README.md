@@ -4,8 +4,12 @@
 
 ![screenshot](./todoappmain.gif)
 
-<img align="left" src="./mobile.png">
-<img align="right" src="./desktop.png">
+<br>
+
+<img align="left" width="500" height="800" src="./mobile.png">
+<img align="right" width="900" height="900" src="./desktop.png">
+
+<br>
 
 ## Built With
 
