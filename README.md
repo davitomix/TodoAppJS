@@ -9,29 +9,24 @@
 <p align="center">
   <img align="left" width="600" height="800" src="./mobile.png">
 </p>
-## Built With
 
-- JS
-- Module Pattern
+## Built With
+- JS ES6
 - Webpack
-- ES6
+- Module Pattern
 - CSS
 
 ## Live Demo
-
 [Live Demo Link :rocket:](#)
 
 
 ## Getting Started
-- Install lodash -> npm install --save lodash
-- Install date-fns -> npm install date-fns --save
-- Download the repo con your computer.
+- Download the repo in your computer.
 - Drag and drop the index.html file from the dist folder into your web browser.
 - Enjoy.
 
 
 ## Authors
-
 👤 **David Elí**
 
 - Github: [@davitomix](https://github.com/davitomix)
@@ -45,15 +40,12 @@
 - Linkedin: [Feber](#)
 
 ## 🤝 Contributing
-
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
 ## Show your support
-
 Give a ⭐️ if you like this project!
 
 ## 📝 License
-
 This project is [MIT](lic.url) licensed.
