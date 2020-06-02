@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
@@ -26,14 +26,19 @@
   </div>
 
   <div class="big-cont">
-    <div class="project-cont">
+    <div class="project-cont d-none">
       <form action="#" name="projectform" id="project-form">
         <label for="project-edit-name">
           Project name<br>
           <input type="text" id="project-name" required><br>
         </label>
-        <button type="submit" name="project-create" class="submit" id="project-create">Create New Project</button>
+        <button type="submit" name="project-create" class="submit" id="project-create">Add New Project</button>
+        <button type="button" name="cancel-pjct" id="project-cancel">Cancel</button>
       </form>
+    </div>
+
+    <div class="project-cont">
+      <button type="button" name="init-pjct" id="project-init">Create Project</button>
     </div>
 
     <div class="task-cont" id="display-text">
@@ -41,7 +46,7 @@
     </div>
 
     <div class="task-cont" id="display-init-todo">
-      <button type="button" name="todo" id="todo-init">Create a Todo</button>
+      <button type="button" name="todo" id="todo-init">Create Todo</button>
     </div>
 
     <div class="todo-create-form d-none task-cont" id="display-form">

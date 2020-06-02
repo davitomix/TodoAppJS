@@ -12,6 +12,8 @@ const storageObj = Storage;
 // Projects.
 const projectObj = Project;
 const projectForm = document.getElementById('project-form');
+const initProjectBtn = document.getElementById('project-init');
+const projectCancel = document.getElementById('project-cancel');
 // Todos.
 const todoForm = document.getElementById('todo-form');
 const todoCancel = document.getElementById('todo-cancel');
@@ -19,6 +21,13 @@ const todoEdit = document.getElementById('todo-save');
 const initTodoBtn = document.getElementById('todo-init');
 
 const run = () => {
+  // Show Create Project Form
+  initProjectBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    domObj.hideProjectInitBox();
+    domObj.showProjectForm();
+  }, false, { once: true });
+
   // Create Project.
   projectForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -29,6 +38,16 @@ const run = () => {
     domObj.showTextForm();
     domObj.clearTodos();
     domObj.hideTodoForm();
+    domObj.hideProjectForm();
+    domObj.showProjectInitBox();
+  }, false, { once: true });
+
+  // Cancel Project.
+  projectCancel.addEventListener('click', (e) => {
+    e.preventDefault();
+    domObj.hideProjectForm();
+    domObj.showProjectInitBox();
+    domObj.clearInput('project-name');
   }, false, { once: true });
 
   // Show Create Todo Form.
@@ -38,7 +57,6 @@ const run = () => {
     domObj.hideTodoSaveBtn();
     domObj.hideTodoInitBox();
   }, false, { once: true });
-
 
   // Create Todo.
   todoForm.addEventListener('submit', (e) => {

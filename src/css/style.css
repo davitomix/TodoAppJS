@@ -9,10 +9,13 @@ html {
 
 
 body{
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lora', serif;
   font-size: 16px;
   padding: 0;
   margin: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(117, 159, 191);
 }
 
 #title {
@@ -72,6 +75,7 @@ body{
 }
 
 .project-li h3 {
+  text-align: center;
   width: 60%;
 }
 
@@ -108,8 +112,10 @@ body{
 }
 
 .project-cont form label input {
+  height: 25px;
   width: 80%;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .todo-task tr th,
@@ -146,13 +152,27 @@ body{
 }
 
 #todo-create,
-#todo-save,
-#todo-cancel,
 #todo-init,
+#project-init,
 #project-create {
   padding: 8.5px 5.5px;
   border-radius: 5px;
   background-color: rgb(120, 164, 109);
+  cursor: pointer;
+}
+
+#project-cancel,
+#todo-cancel {
+  padding: 8.5px 5.5px;
+  border-radius: 5px;
+  background-color: tomato;
+  cursor: pointer;
+}
+
+#todo-save {
+  padding: 8.5px 5.5px;
+  border-radius: 5px;
+  background-color: rgb(58, 85, 174);
   cursor: pointer;
 }
 
