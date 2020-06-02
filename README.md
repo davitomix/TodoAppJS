@@ -6,9 +6,7 @@
 ![screenshot](./todoappmain.gif)
 
 ## Mobile
-<p align="center">
-  ![screenshot](./mobile.png)
-</p>
+![screenshot](./mobile.png)
 
 ## Built With
 - JS ES6
