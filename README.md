@@ -45,5 +45,9 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 Give a ⭐️ if you like this project!
 
+## Source
+[The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/todo-list)
+
+
 ## 📝 License
 This project is [MIT](lic.url) licensed.
