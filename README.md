@@ -18,10 +18,13 @@
 [Live Demo Link :rocket:](https://rawcdn.githack.com/davitomix/TodoAppJS/00187fce98dd54500348ec6616344ea44821b015/dist/index.html)
 
 
-## Getting Started
+## Usage
 - Download the repo in your computer.
 - Drag and drop the index.html file from the dist folder into your web browser.
 - Enjoy.
+
+## Automated Tests :space_invader:
+There are no automated tests for this project, they will eventually be added.
 
 
 ## Authors
